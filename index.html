@@ -1,1 +1,45 @@
-hello
+<!DOCTYPE html>
+
+<html>
+    <head>
+            <link rel="stylesheet" href="css/site.css"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const ul = document.querySelector('ul');
+            ul.addEventListener('mouseover', (event) => {
+                if(event.target.matches('li')) {
+                    event.target.querySelector('a').classList.add('underline');
+                }
+                    
+            })
+            ul.addEventListener('mouseout', (event) => {
+                if(event.target.matches('li')) {
+                    event.target.querySelector('a').classList.remove('underline');
+                }
+            })
+        })
+    </script>    
+    </head>
+    
+    <body>
+        <div id="home">
+            <nav>
+                <div class="nav-container">
+                    <div class ="logo-container">
+                        <a href="#home"><img src="img/zachlogo.png"></a>
+                    </div>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#projects">About</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                </div>
+            </nav>
+            <h1><p id="name">Zach Walker</p>I develop dynamic web applications.</h1>
+        </div>
+        <div id="projects"></div>
+    </body>
+</html>
