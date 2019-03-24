@@ -6,7 +6,7 @@ html {
 body {
     background-color: whitesmoke;
     color: whitesmoke;
-    font-family: 'Pragati Narrow', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 * {
@@ -105,14 +105,14 @@ img {
 }
 
 #name {
-    font-size: 10px;
+    font-size: 16px;
     color: white;
     opacity: 0.6;
 }
 
 #projects {
     width: 100%;
-    background-color: seashell;
+    background-color: rgb(160, 160, 160);
     color: black;
 }
 
@@ -124,10 +124,15 @@ img {
     font-family: Lobster;
     position: relative;
     text-align: center;
+    background-color: white;
 }
 
 video {
     width: 100%;
+}
+
+.single-project-container {
+    background-color: white;
 }
 
 .single-project-container h3{
@@ -135,7 +140,10 @@ video {
 }
 
 .single-project-container p {
-    font-size: 12px;
+    font-size: 16px;
+    margin: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .black {
@@ -143,9 +151,10 @@ video {
 }
 
 #contact {
-    background-color: rgb(182, 182, 201);
+    background-color: #333138;
     width: 100%;
-    color: black;
+    color: white;
+    padding-top: 50px;
 }
 
 .fa-linkedin {
@@ -167,31 +176,34 @@ video {
 
 #contact h1 {
     font-family: Lobster;
-    color: darkred;
+    color: rgb(209, 24, 70);
     text-align: center;
     font-size: 2rem;
+    margin-bottom: 30px;
 }
 
 #contact h4 {
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .contact-info p, #email {
     display: block;
-    text-align: right;
+    text-align: center;
     margin-right: 5px;
     font-size: 16px;
+    color: white;
+    padding-top: 10px;
 }
 
 .social-buttons {
-    text-align: right;
+    text-align: center;
     margin-right: 5px;
+    padding-top: 10px;
 }
 
 .contact-info-and-image-container {
-    display: flex;
-    justify-content: space-between;
-}
-.contact-info-and-image-container * {
-    flex-basis: 40%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 40px;
 }
