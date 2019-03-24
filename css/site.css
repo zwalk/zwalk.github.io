@@ -89,7 +89,7 @@ img {
     background-color: black;
 }
 
-.nav-anchor a:hover:before {
+.nav-anchor:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
