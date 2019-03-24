@@ -85,7 +85,7 @@ img {
     transition: all 0.3s ease-in-out 0s;
 }
 
-.nav-anchor .black:before {
+.black:before {
     background-color: black;
 }
 
@@ -208,4 +208,50 @@ video {
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 40px;
+}
+
+#zach-image {
+    max-width: 260px;
+}
+
+@media only screen and (min-width: 768px) {
+    .nav-anchor {
+        font-size: 27px;
+    }
+
+    .all-projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: white;
+    }
+
+    .single-project-container {
+        flex-basis: 40%;
+    }
+
+    .contact-info-and-image-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .contact-info p, #email {
+        text-align: left;
+    }
+
+    .social-buttons {
+        text-align: left;
+    }
+
+    .contact-info {
+        margin-left: 20px;
+    }
+
+    .single-project-container h3 {
+        font-size: 2rem;
+    }
+
+    .single-project-container p {
+        font-size: 20px;
+    }
 }
