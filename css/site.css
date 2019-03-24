@@ -293,4 +293,8 @@ video {
         max-width: 260px;
         margin: inherit;
     }
+
+    #name {
+        font-size: 1.7rem;
+    }
 }
