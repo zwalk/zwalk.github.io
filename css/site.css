@@ -6,17 +6,19 @@ html {
 body {
     background-color: whitesmoke;
     color: whitesmoke;
+    font-family: 'Pragati Narrow', sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
- 
+   
 }
 
 #home {
     height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.753), royalblue, slategray);
+    background-image: url("/img/beautiful-sky.jpg");
+    background-size: cover;
     position: relative;
 }
 
@@ -28,7 +30,7 @@ img {
     width: 100%;
 }
 
-ul {
+.nav-container ul {
     font-family: lobster;
     display: flex;
     text-decoration: none;
@@ -41,9 +43,11 @@ ul {
     width: 100%;
     overflow: hidden;
     display: flex;
+    position: fixed;
+    z-index: 1;
 }
 
-li {
+.nav-container li {
     flex-basis: 20%;
     text-align: center;
     position: relative;
@@ -54,18 +58,19 @@ li {
 .logo-container {
     flex-basis: 20%;
 }
- li a {
+
+.nav-anchor {
     text-decoration: none;
     color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 10px;
+    font-size: 15px;
  }
 
 
-li a:before {
+.nav-anchor:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -80,13 +85,17 @@ li a:before {
     transition: all 0.3s ease-in-out 0s;
 }
 
-li a:hover:before {
+.nav-anchor .black:before {
+    background-color: black;
+}
+
+.nav-anchor a:hover:before {
     visibility: visible;
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
 }
 
-h1 {
+#home h1 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -98,11 +107,91 @@ h1 {
 #name {
     font-size: 10px;
     color: white;
-    opacity: 0.3;
+    opacity: 0.6;
 }
 
 #projects {
     width: 100%;
-    height: 100vh;
-    background-color: whitesmoke;
+    background-color: seashell;
+    color: black;
+}
+
+#projects a {
+    text-decoration: none;
+}
+
+.page-title {
+    font-family: Lobster;
+    position: relative;
+    text-align: center;
+}
+
+video {
+    width: 100%;
+}
+
+.single-project-container h3{
+    text-align: center;
+}
+
+.single-project-container p {
+    font-size: 12px;
+}
+
+.black {
+    color: black;
+}
+
+#contact {
+    background-color: rgb(182, 182, 201);
+    width: 100%;
+    color: black;
+}
+
+.fa-linkedin {
+    background: #007bb5;
+    color: white;
+    border-radius: 2px;
+    padding: 1px;
+    text-decoration: none;
+    font-size: 1.8em;
+  }
+
+  .fa-github {
+      background: #444444;
+      color: white;
+      text-decoration: none;
+      border-radius: 2px;
+      padding: 1px;
+  }
+
+#contact h1 {
+    font-family: Lobster;
+    color: darkred;
+    text-align: center;
+    font-size: 2rem;
+}
+
+#contact h4 {
+    text-align: center;
+}
+
+.contact-info p, #email {
+    display: block;
+    text-align: right;
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.social-buttons {
+    text-align: right;
+    margin-right: 5px;
+}
+
+.contact-info-and-image-container {
+    display: flex;
+    justify-content: space-between;
+}
+.contact-info-and-image-container * {
+    flex-basis: 40%;
 }
