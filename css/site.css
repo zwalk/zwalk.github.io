@@ -210,6 +210,10 @@ video {
     padding-bottom: 40px;
 }
 
+.zach-image-container {
+    margin: 0 auto;
+}
+
 #zach-image {
     max-width: 260px;
 }
