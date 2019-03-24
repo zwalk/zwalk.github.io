@@ -211,14 +211,19 @@ video {
 }
 
 .zach-image-container {
-    margin: 0 auto;
     max-width: 260px;
+    margin: 0 auto;
 }
 
 
 @media only screen and (min-width: 768px) {
+
+    #home h1 {
+        font-size: 4rem;
+    }
+
     .nav-anchor {
-        font-size: 27px;
+        font-size: 30px;
     }
 
     .all-projects-container {
@@ -255,5 +260,37 @@ video {
 
     .single-project-container p {
         font-size: 20px;
+    }
+
+    #contact h1 {
+        font-size: 3rem;
+    }
+
+    #contact h4 {
+        font-size: 2rem;
+    }
+
+    .contact-info p, #email {
+        font-size: 25px;
+    }
+
+    .fa {
+        font-size: 35px !important;
+    }
+
+    .zach-image-container {
+        max-width: 260px;
+        margin: inherit;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .logo-container {
+        flex-basis: 7%;
+    }
+
+    .zach-image-container {
+        max-width: 260px;
+        margin: inherit;
     }
 }
