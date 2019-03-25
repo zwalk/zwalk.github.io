@@ -216,6 +216,14 @@ video {
     margin: 0 auto;
 }
 
+.white-background {
+    background-color: white;
+}
+
+.scaled-logo {
+    flex-basis: 10%;
+}
+
 
 @media only screen and (min-width: 768px) {
 

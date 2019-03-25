@@ -21,11 +21,15 @@
                         a.classList.add('black');
                     })
                     document.getElementById('zach-logo').src="img/zachlogo-black.png";
+                    document.querySelector('.nav-container').classList.add('white-background');
+                    document.querySelector('.logo-container').classList.add('scaled-logo');
                 } else {
                     document.querySelectorAll('li a').forEach((a) => {
                         a.classList.remove('black');
                     })
                     document.getElementById('zach-logo').src="img/zachlogo.png";
+                    document.querySelector('.nav-container').classList.remove('white-background');
+                    document.querySelector('.logo-container').classList.remove('scaled-logo');
                 }
 
 
