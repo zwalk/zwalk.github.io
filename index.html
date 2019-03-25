@@ -15,8 +15,8 @@
             * Below finds nav bar anchor elements and turns them black if you have scrolled to the projects page
             */
             document.addEventListener('scroll', () => {
-                if (document.body.scrollTop + (document.querySelector('.nav-container').offsetHeight / 2) >= document.getElementById('projects').offsetTop 
-                || document.documentElement.scrollTop + (document.querySelector('.nav-container').offsetHeight / 2) >= document.getElementById('projects').offsetTop) {
+                if (document.body.scrollTop + 52.5 >= document.getElementById('projects').offsetTop 
+                || document.documentElement.scrollTop + 52.5 >= document.getElementById('projects').offsetTop) {
                     document.querySelectorAll('li a').forEach((a) => {
                         a.classList.add('black');
                     })
