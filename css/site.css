@@ -224,6 +224,10 @@ video {
     flex-basis: 10%;
 }
 
+.fa {
+    font-size: 30px !important;
+}
+
 
 @media only screen and (min-width: 768px) {
 
