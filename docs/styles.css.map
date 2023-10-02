@@ -1,1 +1,0 @@
-{"version":3,"file":"styles.css","mappings":";;;AAAA;CACC,SAAS;CACT,UAAU;AACX;;AAEA;CACC,WAAW;CACX,YAAY;CACZ,uBAAuB;AACxB,C","sources":["./src/styles.css"],"sourcesContent":["* {\n\tmargin: 0;\n\tpadding: 0;\n}\n\nhtml {\n\twidth: 100%;\n\theight: 100%;\n\tscroll-behavior: smooth;\n}"],"names":[],"sourceRoot":"webpack:///","x_google_ignoreList":[]}
