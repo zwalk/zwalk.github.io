@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<link rel="stylesheet" href="css/site.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script>
+		//add event listener to make sure the DOM loads first.
+		document.addEventListener('DOMContentLoaded', () => {
+
+			/**
+			* Below finds nav bar anchor elements and turns them black if you have scrolled to the projects page
+			*/
+			document.addEventListener('scroll', () => {
+				if (document.body.scrollTop + 52.5 >= document.getElementById('projects').offsetTop
+					|| document.documentElement.scrollTop + 52.5 >= document.getElementById('projects').offsetTop) {
+					document.querySelectorAll('li a').forEach((a) => {
+						a.classList.add('black');
+					})
+					document.getElementById('zach-logo').src = "img/zachlogo-black.png";
+					document.querySelector('.nav-container').classList.add('white-background');
+					document.querySelector('.logo-container').classList.add('scaled-logo');
+				} else {
+					document.querySelectorAll('li a').forEach((a) => {
+						a.classList.remove('black');
+					})
+					document.getElementById('zach-logo').src = "img/zachlogo.png";
+					document.querySelector('.nav-container').classList.remove('white-background');
+					document.querySelector('.logo-container').classList.remove('scaled-logo');
+				}
+
+
+			})
+
+		})
+	</script>
+</head>
+
+<body>
+	<div id="home">
+		<nav>
+			<div class="nav-container">
+				<div class="logo-container">
+					<a href="#home"><img id="zach-logo" src="img/zachlogo.png"></a>
+				</div>
+				<ul>
+					<li><a class="nav-anchor" href="#home">Home</a></li>
+					<li><a class="nav-anchor" href="#projects">Projects</a></li>
+					<li><a class="nav-anchor" href="#contact">Contact</a></li>
+				</ul>
+			</div>
+		</nav>
+		<h1>
+			<p id="name">Zach Walker</p>I develop dynamic web applications.
+		</h1>
+	</div>
+	<div id="projects">
+		<h1 class="page-title">Projects</h1>
+		<div class="all-projects-container">
+			<div class="single-project-container">
+				<h3>Podcast Festival Scheduler</h3>
+				<video controls>
+					<source src="vid/pfDemo.mov#t=0.1" type="video/mp4">
+					Your browser does not support this video.
+				</video>
+				<p>This is a demo of my final capstone at Tech Elevator! I am very proud of how it
+					turned out especially on mobile. The project was very heavy on JavaScript.</p>
+			</div>
+			<div class="single-project-container">
+				<h3>Vending Machine Web Edition</h3>
+				<video controls>
+					<source src="vid/VendingMachineWebProtoDemo.mov#t=0.1" type="video/mp4">
+					Your browser does not support this video.
+				</video>
+				<p>*Currently Developing* As my knowledge is increasing, I wanted to bring my first
+					application, the command-line vending machine, to the web! Here you see the
+					HTML/CSS view that I have built for it.</p>
+			</div>
+			<div class="all-projects-container">
+				<div class="single-project-container">
+					<h3>Texas Hold Em</h3>
+					<video controls>
+						<source src="vid/TexasHoldEmDemo.mov#t=0.1" type="video/mp4">
+						Your browser does not support this video.
+					</video>
+					<p>This is a code kata that I was assigned. It generates poker hands for 6
+						players and can effectively compare them to determine the winner. <a
+							href="https://github.com/zwalk/NationalParkRegistry">See
+							code</a> </p>
+				</div>
+				<div class="single-project-container">
+					<h3>National Park Weather Service</h3>
+					<video controls>
+						<source src="vid/NationalParkWeatherDemo.mov#t=0.1" type="video/mp4">
+						Your browser does not support this video.
+					</video>
+					<p>Built using the MVC pattern. This web app gives you detail and weather
+						information on a selected park pulled from a SQL database. My favorite
+						part was adding an easter egg so that when you click today's weather
+						picture, the background darkens and rains.
+						<a href="https://github.com/zwalk/NationalParkWeatherService">See
+							code</a>
+					</p>
+				</div>
+				<div class="single-project-container">
+					<h3>National Park Registry</h3>
+					<video controls>
+						<source src="vid/ParksResDemo.mov#t=0.1" type="video/mp4">
+						Your browser does not support this video.
+					</video>
+					<p>Demo of parks reservation command line. My pair programming partner and I
+						were the first to ever complete all MVP user stories and bonus user
+						stories. The advanced search functionality was one of the fun challenges
+						to write!
+						<a href="https://github.com/zwalk/NationalParkRegistry">See code</a>
+					</p>
+				</div>
+				<div class="single-project-container">
+					<h3>Vending Machine</h3>
+					<video controls>
+						<source src="vid/VendingMachineDemo.mov#t=0.1" type="video/mp4">
+						Your browser does not support this video.
+					</video>
+					<p>This is a quick demo of my first application! I'm very proud of this
+						command-line vending machine.
+						<a href="https://github.com/zwalk/vendingmachine">See code</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="contact">
+			<h1>Zachary S. Walker</h1>
+			<h4>Let's talk code.</h4>
+			<div class="contact-info-and-image-container">
+				<div class="zach-image-container">
+					<img id="zach-image" src="img/zach1.jpg" />
+				</div>
+				<div class="contact-info">
+					<a id="email" href="mailto:me@zachwalker.dev">me@zachwalker.dev</a>
+					<p>Columbus, Ohio</p>
+					<div class="social-buttons">
+						<a href="https://www.linkedin.com/in/zswalker/"
+							class="fa fa-linkedin"></a>
+						<a href="https://github.com/zwalk/" class="fa fa-github"></a>
+					</div>
+				</div>
+	</body>
+</html>

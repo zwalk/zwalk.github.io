@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { V1Component } from 'versions/v1/v1.component';
-import { AppComponent } from './app.component';
+import { V1Component } from './v1/v1.component';
 import { V2Component } from './v2/v2.component';
 
 const routerOptions: ExtraOptions = {
