@@ -1,0 +1,36 @@
+<app-nav></app-nav>
+<app-border>
+	<app-page-title
+	[title]="this.label"
+	[tiles]="this.tiles"></app-page-title>
+
+	<div class="connect-content-container">
+			<div class="connect-form-container">
+				<div class="form-header">
+					Email Me
+				</div>
+				<!-- action="https://api.web3forms.com/submit" method="POST" -->
+				<form [formGroup]="formGroup" (submit)="onSubmit()">
+					<div>
+						<input type="hidden" name="access_key" value="85399c7d-5db3-4f6f-84ca-872ed5942efe">
+						<input type="text" name="name" placeholder="Name" formControlName="name" required>
+						<input type="email" name="email" placeholder="Email" formControlName="email" required>
+						<textarea name="message" placeholder="Message" formControlName="message" required></textarea>
+					</div>
+					<div class="captcha-and-submit">
+						<ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+						<button class="form-button" type="submit">Send</button>
+					</div>
+				</form>
+				<script src="https://web3forms.com/client/script.js" async defer></script>
+			</div>
+			<div class="social-icons">
+				<a #linkedin href="https://www.linkedin.com/in/zswalker/" (mouseenter)="spin(linkedin)" (mouseleave)="backToStart(linkedin)">
+					<img src="assets/v2/img/linkedin_icon.png" alt="icon to Zach's LinkedIn">
+				</a>
+				<a #github href="https://github.com/zwalk" (mouseenter)="spin(github)" (mouseleave)="backToStart(github)">
+					<img src="assets/v2/img/github_icon.png" alt="icon to Zach's Github account">
+				</a>
+			</div>
+	</div>
+</app-border>

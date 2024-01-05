@@ -1,0 +1,28 @@
+.title-and-tile-container {
+	display: flex;
+	justify-content: space-evenly;
+	position: absolute;
+	top: 1%;
+	width: 100%;
+}
+
+.page-title-container {
+	flex-basis: 40%;
+}
+
+.page-title {
+	font-family: 'Amatic SC', monospace;
+	font-size: 8rem;
+}
+
+.tile-container {
+	display: flex;
+	flex-basis: 45%;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+app-tile {
+	z-index: 1;
+	flex-basis: 23%;
+}

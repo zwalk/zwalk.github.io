@@ -1,0 +1,123 @@
+.connect-content-container {
+	z-index: 1;
+	flex-basis: 70%;
+	width: 95%;
+	align-self: center;
+	display: flex;
+	margin-bottom: 3%;
+	justify-content: center;
+}
+
+.connect-form-container {
+	flex-basis: 40%;
+	position: relative;
+	background: #242424;
+	border-radius: 15px;
+
+	&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 20px;
+			right: 20px;
+			bottom: 0;
+			border-radius: 15px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+			z-index: -1;
+	}
+}
+
+.form-header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 7%;
+	background: #4d4d4f;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	font-family: 'IBM Plex Mono', monospace;
+	color: #f0eae5;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 80%;
+	height: 93%;
+	margin: 0 auto;
+}
+
+form textarea {
+	height: 200px;
+	resize: none;
+}
+
+form input, form textarea {
+	width: 100%;
+	padding: 10px 0;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #666;
+	color: #ddd;
+	font-size: 14px;
+	text-transform: uppercase;
+	outline: none;
+	transition: border-color .2s;
+	font-family: 'IBM Plex Mono', monospace;
+
+	&::placeholder {
+		color: #666
+	}
+
+	&:focus {
+		border-bottom-color: #ddd;
+	}
+}
+
+.form-button {
+	background: none;
+	border: none;
+	color: #ea1d6f;
+	font-size: 1.25rem;
+	cursor: pointer;
+	outline: none;
+	font-family: 'IBM Plex Mono', monospace;
+	margin-top: 5%;
+
+	&:hover {
+		color: #b9134f;
+	}
+}
+
+ng-hcaptcha {
+	align-self: center;
+}
+
+.captcha-and-submit {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 35%;
+	justify-content: space-around;
+}
+
+.social-icons {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	flex-basis: 5%;
+	margin-left: .5%;
+}
+
+.social-icons a {
+	flex-basis: 10%;
+	filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .4));
+	transition: ease-in-out 1s;
+	display: block;
+}
+
+.spin {
+		transform: rotateY(360deg) scale(1.5) translateY(-5px);
+		z-index: 1;
+}

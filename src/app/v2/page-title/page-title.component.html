@@ -1,0 +1,9 @@
+<div class="title-and-tile-container">
+	<div class="page-title-container">
+		<h1 class="page-title">{{title}}</h1>
+	</div>
+	<div class="tile-container">
+		<app-tile *ngFor="let tile of tiles" [tile]=tile>
+		</app-tile>
+	</div>
+</div>

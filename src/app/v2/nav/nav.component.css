@@ -1,0 +1,54 @@
+#info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index: 1;
+}
+
+button {
+	cursor: pointer;
+	font-size: 50%;
+	padding: 6px 14px;
+	font-family: 'IBM Plex Mono', monospace;
+	border: none;
+	border-left: solid rgba(240, 234, 229, 0.1);
+	background-color: #242424;
+	color: #f0eae5;
+}
+
+button:hover {
+	background-color: #f0eae5;
+	color: #242424;
+}
+
+#nav {
+	font-size: x-large;
+	font-family: 'IBM Plex Mono', monospace;
+	background-color: #242424;
+	color: #f0eae5;
+	z-index: 1;
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	height: 4%;
+}
+
+.logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 1%;
+	cursor: pointer;
+	flex-basis: 2%;
+}
+
+h1 {
+	margin-top: 2%;
+	z-index: 1;
+}
+
+h4 {
+	z-index: 1;
+	margin-top: 1%;
+}

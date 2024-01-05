@@ -1,0 +1,12 @@
+<div class="work-tile" (mouseenter)="showOverlay()" (mouseleave)="hideOverlay()" (click)="goToUrl()">
+	<div class="work-logo-container" (mouseenter)="showOverlay()">
+		<img src="{{workTile.img}}" (mouseenter)="showOverlay()">
+			<p [ngClass]="{show: shouldShowOverlay, hidden: !shouldShowOverlay}" class="overlay" (mouseenter)="showOverlay()">
+				{{workTile.overlayText}}</p>
+	</div>
+	<div class="work-metadata">
+		<h4 *ngFor="let role of workTile.roles" class="role">{{role.jobTitle}}<span
+				*ngIf="role.subTitle">{{role.subTitle}}</span></h4>
+		<p class="date">{{workTile.dates}}</p>
+	</div>
+</div>

@@ -11,7 +11,7 @@ export class V1Component {
 
   constructor(private router : Router) {}
 
-  ngOnInit() {
+  ngAfterViewInit() {
 
     // NOT ANGULAR BEST PRACTICE - preserving original version
 

@@ -1,0 +1,9 @@
+<div class="tile" 
+(mouseenter)="playVideo()"
+(mouseleave)="resetVideo()"
+routerLink="{{tile.pageUrl}}">
+	<video #vid loop preload>
+		<source src="{{tile.videoUrl}}#t={{tile.startTime}}">
+	</video>
+	<p>{{tile.label}}</p>
+</div>

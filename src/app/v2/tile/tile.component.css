@@ -1,0 +1,34 @@
+.tile {
+	flex-basis: 45%;
+	margin-bottom: 6%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	border-radius: 15%;
+	filter: drop-shadow(20px 45px 45px #242424);
+	cursor: pointer;
+}
+
+.tile video {
+	width: 100%;
+	display: block;
+	filter: blur(1.5px);
+}
+
+.tile:hover {
+	transform: scale(1.1);
+}
+
+.tile p {
+	text-align: center;
+	font-family: 'IBM Plex Mono',
+		monospace;
+	font-weight: bolder;
+	position: absolute;
+	color: #f0eae5;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: x-large;
+	text-shadow: 0 0 10px darkblue, 0 0 12px slategray;
+}

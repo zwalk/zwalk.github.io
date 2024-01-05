@@ -1,0 +1,16 @@
+<app-nav></app-nav>
+<div class="home-wrapper">
+	<app-border></app-border>
+	<div class="home-banner">
+		<div class="home-image-container">
+			<img class="zach-image" src="assets/v2/img/me_nb.png" />
+		</div>
+		<div class="info">
+			<h1 id="name">Zach Walker</h1>
+			<h3 id="title">Software Engineer</h3>
+			<div class="tile-container">
+				<app-tile *ngFor="let tile of tiles" [tile]=tile></app-tile>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,91 @@
+img {
+	width: 100%;
+}
+
+.home-wrapper {
+	height: 96%;
+}
+
+.home-banner {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-right: 5%;
+	flex-basis: 40%;
+	animation: 1s ease-in 0s 1 slideInFromRightAndFocus;
+}
+
+@keyframes slideInFromRightAndFocus {
+	0% {
+		transform: translate(2%, 1%);
+		filter: blur(4px);
+	}
+
+	100% {
+		transform: translate(0, 0);
+		filter: blur(0px);
+	}
+}
+
+#name {
+	font-family: 'Amatic SC', monospace;
+	font-size: 8rem;
+	font-weight: bold;
+}
+
+#title, #name {
+	color: #242424;
+	text-align: right;
+	width: 100%;
+}
+
+#title {
+	font-family: 'IBM Plex Mono', monospace;
+}
+
+.home-image-container {
+	flex-basis: 35%;
+	z-index: 1;
+	position: relative;
+	height: 100%;
+}
+
+.zach-image {
+	-webkit-filter: drop-shadow(20px 45px 45px #242424) invert(5%);
+	filter: drop-shadow(20px 45px 45px #242424) invert(5%);
+	position: absolute;
+	bottom: 0;
+	animation: 1s ease-in 0s 1 slideInFromLeftAndFocus;
+}
+
+@keyframes slideInFromLeftAndFocus {
+	0% {
+		transform: translate(-2%, 1%);
+		filter: blur(4px);
+	}
+
+	100% {
+		transform: translate(0, 0);
+		filter: blur(0px);
+	}
+}
+
+.tile-container {
+	display: flex;
+	flex-basis: 39%;
+	margin-top: 5%;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+app-tile {
+	flex-basis: 45%;
+}
+

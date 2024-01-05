@@ -1,0 +1,103 @@
+img {
+	width: 100%;
+	height: 100%;
+}
+
+app-page-title {
+	flex-basis: 20%;
+}
+
+.about-container {
+	display: flex;
+	flex-basis: 35%;
+	justify-content: space-evenly;
+	align-items: flex-start;
+	box-sizing: border-box;
+	position: relative;
+	margin-bottom: 5%;
+}
+
+.about-img-container {
+	flex-basis: 25%;
+	height: 100%;
+	border-radius: 5%;
+	position: relative;
+	filter: drop-shadow(0px 36px 34px #242424);
+}
+
+.about-img-container img {
+	border-radius: 40px;
+}
+
+.about-info-container {
+	display: flex;
+	justify-content: center;
+	flex-basis: 60%;
+	/* border: solid; */
+	height: 100%;
+	border-top-right-radius: 5%;
+	border-bottom-right-radius: 5%;
+	position: relative;
+	text-align: center;
+		--b: .5em;
+			/* border width */
+			--c: 12em;
+			/* corner size */
+			--r: 2em;
+			/* corner rounding */
+			border: solid var(--b) transparent;
+		
+			&::before {
+				position: absolute;
+				z-index: -1;
+				inset: calc(-1*var(--b));
+				border: inherit;
+				border-radius: var(--r);
+				background: linear-gradient(rgba(100, 43, 115, 1), rgba(4, 0, 4, 1)) border-box;
+				--corner:
+					conic-gradient(from -90deg at var(--c) var(--c), red 25%, #0000 0) 0 0/ calc(100% - var(--c)) calc(100% - var(--c)) border-box;
+				--inner: conic-gradient(red 0 0) padding-box;
+				-webkit-mask: var(--corner), var(--inner);
+				-webkit-mask-composite: source-out;
+				mask: var(--corner) subtract, var(--inner);
+				content: '';
+				left: 2%;
+				right: 2%;
+				top: -1%;
+				bottom: -1%;
+			}
+}
+
+.about-img-container::before {
+	background:
+			repeating-linear-gradient(-45deg,
+				#242424, #242424 1.125px
+				/* lines */
+				,
+				transparent 2.125px, transparent 0px
+				/* space between */
+			) 50% no-repeat;
+	position: absolute;
+	content: "";
+	top: 1%;
+	bottom: -2%;
+	left: -2%;
+	right: 2%;
+	z-index: -1;
+	border-radius: 40px;
+}
+
+.about-info {
+	width: 85%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.about-info * {
+	font-family: 'IBM Plex Mono', monospace;
+}
+
+.about-info p {
+	font-size: 1rem;
+}
