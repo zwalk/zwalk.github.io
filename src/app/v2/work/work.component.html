@@ -2,7 +2,9 @@
 <app-border>
 	<app-page-title
 	[title]="this.label"
-	[tiles]="this.tiles"></app-page-title>
+	[tiles]="this.tiles"
+	[buttonText]="'Download Resume'"
+	[buttonFunction]="goToResume"></app-page-title>
 	<div class="work-content">
 		<app-work-tile *ngFor="let workTile of workTiles" [workTile]=workTile>
 		</app-work-tile>

@@ -13,5 +13,11 @@ export class PageTitleComponent {
     label: undefined,
     startTime: 0
   }];
-
+  @Input() buttonText : string | undefined = undefined;
+  hasButton: boolean = false;
+  @Input() buttonFunction: () => void = () => {};
+  
+  ngOnInit() {
+    this.hasButton = this.buttonText != undefined;
+  }
 }

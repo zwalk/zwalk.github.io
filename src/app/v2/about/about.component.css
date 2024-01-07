@@ -101,3 +101,10 @@ app-page-title {
 .about-info p {
 	font-size: 1rem;
 }
+
+.experience-and-tech {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-basis: 26%;
+}

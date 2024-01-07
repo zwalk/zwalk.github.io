@@ -4,8 +4,10 @@
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
 	<div class="education-container">
-		<div class="education-tile">
-			<div class="back"></div>
+		<div #educationTile class="education-tile" [ngClass]="this.flipped ? 'backwards' : ''">
+			<div class="back">
+				<img src="assets/v2/img/te_group.jpg"/>
+			</div>
 			<div class="left"></div>
 			<div class="right"></div>
 			<div class="top"></div>
@@ -40,8 +42,10 @@
 			</div>
 		</div>
 
-		<div class="education-tile">
-			<div class="back"></div>
+		<div #educationTile class="education-tile" [ngClass]="this.flipped ? 'backwards' : ''">
+			<div class="back">
+				<img src="assets/v2/img/osu_group.jpg"/>
+			</div>
 			<div class="left"></div>
 			<div class="right"></div>
 			<div class="top"></div>
@@ -61,7 +65,7 @@
 					<div class="quotes">
 						<img src="assets/v2/img/quotes2.png">
 					</div>
-					<p class="rec x-large">
+					<p class="rec large">
 						Zachary is a diligent thoughtful student. His maturity and academic focus are above par as he pursues his
 						aspirations.
 						Being a member of a selective program called the Business Scholars Program, Zachary is preparing to make an impact
@@ -73,4 +77,5 @@
 			</div>
 		</div>
 	</div>
+	<button (click)="flip()">{{buttonText}}</button>
 </app-border>

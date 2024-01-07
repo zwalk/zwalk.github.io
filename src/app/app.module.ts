@@ -17,8 +17,9 @@ import { UnknownRouteComponent } from './v2/unknown-route/unknown-route.componen
 import { AboutComponent } from './v2/about/about.component';
 import { PageTitleComponent } from './v2/page-title/page-title.component';
 import { ConnectComponent } from './v2/connect/connect.component';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations'
 
-import { NgHcaptchaModule } from 'ng-hcaptcha';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 
 @NgModule({
@@ -43,11 +44,14 @@ import { NgHcaptchaModule } from 'ng-hcaptcha';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgHcaptchaModule.forRoot({
-      siteKey: '1f981ce1-1e51-44b6-be98-522eba09c5a0'
-    }),
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    provideAnimations(),
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LcPYEcpAAAAAKGbAwbbbd_SvY65srwzeXUP7cdn' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

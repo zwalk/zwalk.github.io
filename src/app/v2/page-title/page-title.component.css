@@ -26,3 +26,36 @@ app-tile {
 	z-index: 1;
 	flex-basis: 23%;
 }
+
+button {
+	background-color: #f0eae5;
+	border: 1px solid #adb0b0;
+	border-radius: 8px;
+	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+	box-sizing: border-box;
+	color: #0f1111;
+	cursor: pointer;
+	display: inline-block;
+	font-family: "IBM Plex Mono", sans-serif;
+	font-size: small;
+	line-height: 29px;
+	padding: 0 10px 0 11px;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	vertical-align: middle;
+	z-index: 2;
+}
+
+button:hover {
+	background-color: #f7fafa;
+}
+
+button:focus {
+	border-color: #008296;
+	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+	outline: 0;
+}

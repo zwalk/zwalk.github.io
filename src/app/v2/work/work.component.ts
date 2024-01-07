@@ -41,7 +41,7 @@ export class WorkComponent {
     }
   ]
 
-  goToResume() {
+  goToResume() : void {
     window.location.href = 'assets/v2/files/ZachWalker_resume.pdf';
   }
 }

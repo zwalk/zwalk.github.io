@@ -1,6 +1,7 @@
 <div class="title-and-tile-container">
 	<div class="page-title-container">
 		<h1 class="page-title">{{title}}</h1>
+		<button *ngIf="hasButton">{{buttonText}}</button>
 	</div>
 	<div class="tile-container">
 		<app-tile *ngFor="let tile of tiles" [tile]=tile>

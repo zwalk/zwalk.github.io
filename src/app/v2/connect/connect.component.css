@@ -84,11 +84,16 @@ form input, form textarea {
 	cursor: pointer;
 	outline: none;
 	font-family: 'IBM Plex Mono', monospace;
-	margin-top: 5%;
+	margin-top: 3%;
 
 	&:hover {
 		color: #b9134f;
 	}
+}
+
+#captcha_element {
+	display: flex;
+	justify-content: center;
 }
 
 ng-hcaptcha {
@@ -99,7 +104,7 @@ ng-hcaptcha {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 35%;
-	justify-content: space-around;
+	justify-content: center;
 }
 
 .social-icons {
@@ -120,4 +125,27 @@ ng-hcaptcha {
 .spin {
 		transform: rotateY(360deg) scale(1.5) translateY(-5px);
 		z-index: 1;
+}
+
+.alert {
+	text-align: center;
+	background-color: #242424;
+	margin: 0 auto;
+	color: #d25252;
+	font-size: smaller;
+}
+
+.alert-input {
+	border-bottom: 1px solid #d25252 !important;
+}
+
+.flex-start {
+	justify-content: flex-start;
+}
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-color: #242424bb;
 }

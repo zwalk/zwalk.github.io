@@ -5,24 +5,29 @@
 	[tiles]="this.tiles"></app-page-title>
 
 	<div class="connect-content-container">
-			<div class="connect-form-container">
+			<div [@shake]="shake ? 'true' : 'false'" (@shake.done)="shake = false" class="connect-form-container">
 				<div class="form-header">
 					Email Me
 				</div>
-				<!-- action="https://api.web3forms.com/submit" method="POST" -->
-				<form [formGroup]="formGroup" (submit)="onSubmit()">
+				<div class="overlay">Thank you for contacting me! I will get back to you shortly.</div>
+				<p *ngIf="requiredList.length > 0" class="alert">{{requiredList}} {{beingVerb}} required</p>
+				<p *ngIf="!emailIsValid" class="alert">Invalid Email entered</p>
+				<form id="contact-form" [formGroup]="formGroup" (submit)="onSubmit()">
 					<div>
-						<input type="hidden" name="access_key" value="85399c7d-5db3-4f6f-84ca-872ed5942efe">
-						<input type="text" name="name" placeholder="Name" formControlName="name" required>
-						<input type="email" name="email" placeholder="Email" formControlName="email" required>
-						<textarea name="message" placeholder="Message" formControlName="message" required></textarea>
+						<input [ngClass]="invalidInputs.includes('name') ? 'alert-input' : ''" type="text" name="name" placeholder="Name" formControlName="name" required>
+						<input [ngClass]="invalidInputs.includes('email') ? 'alert-input' : ''" type="email" name="email" placeholder="Email" formControlName="email" required email>
+						<textarea [ngClass]="invalidInputs.includes('message') ? 'alert-input' : ''" name="message" placeholder="Message" formControlName="message" required></textarea>
 					</div>
-					<div class="captcha-and-submit">
-						<ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+					<div class="captcha-and-submit" [ngClass]="requiredList.length > 0 ? 'flex-start' : ''">
+						<div class="form-group">
+							<div id="captcha_element"
+								class="g-recaptcha"
+								data-sitekey="6LcAh0cpAAAAABsJHjujfrSlV-DP9Vy9LpakFChq"
+								data-theme="dark"></div>
+						</div>
 						<button class="form-button" type="submit">Send</button>
 					</div>
 				</form>
-				<script src="https://web3forms.com/client/script.js" async defer></script>
 			</div>
 			<div class="social-icons">
 				<a #linkedin href="https://www.linkedin.com/in/zswalker/" (mouseenter)="spin(linkedin)" (mouseleave)="backToStart(linkedin)">

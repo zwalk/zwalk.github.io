@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Tiles } from '../constants/Tiles';
-import * as moment from 'moment';
-moment().format();
+import { DateTime } from 'luxon';
 
 
 @Component({
@@ -15,9 +14,9 @@ export class AboutComponent {
   tiles = this.tileList.getFilteredTiles(this.label);
   years = this.getYears();
 
-  getYears() {
-    const now = moment();
-    // return moment([2019, 4, 1]).toNow(true).slice(0,1);
-    return now.diff(moment([2019, 4, 1]), 'years');
+  getYears() : number | undefined {
+    const now = DateTime.now();
+    const years = now.diff(DateTime.fromISO('2019-05-01'), 'years').toObject()['years'];
+    return years != undefined ? Math.trunc(years) : undefined;
   }
 }

@@ -32,54 +32,13 @@ app-tile {
 	z-index: 1;
 	width: 80%;
 	margin: 0 auto;
-	margin-bottom: 7%;
+	margin-bottom: 4%;
 	flex-basis: 55%;
-	background:
-			repeating-linear-gradient(45deg,	
-				#242424, #242424 0.125px
-				/* lines */
-				,
-				transparent 0.125px, transparent 1px
-				/* space between */
-			) 50% no-repeat;
-			border-radius: 4%;
 }
 
 app-work-tile {
 	flex-basis: 28%;
 	height: 100%;
-}
-
-button {
-	background-color: #f0eae5;
-	border: 1px solid #adb0b0;
-	border-radius: 8px;
-	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-	box-sizing: border-box;
-	color: #0f1111;
-	cursor: pointer;
-	display: inline-block;
-	font-family: "IBM Plex Mono", sans-serif;
-	font-size: small;
-	line-height: 29px;
-	padding: 0 10px 0 11px;
-	position: relative;
-	text-align: center;
-	text-decoration: none;
-	user-select: none;
-	-webkit-user-select: none;
-	touch-action: manipulation;
-	vertical-align: middle;
-}
-
-button:hover {
-	background-color: #f7fafa;
-}
-
-button:focus {
-	border-color: #008296;
-	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-	outline: 0;
 }
 
 app-border .border {
