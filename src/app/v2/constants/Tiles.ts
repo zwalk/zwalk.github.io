@@ -25,7 +25,7 @@ export class Tiles {
 			startTime: 0
 		},
 		{
-			videoUrl: "assets/v2/vid/connect.mp4",
+			videoUrl: "assets/v2/vid/connect.mov",
 			pageUrl: "/v2/connect",
 			label: "Connect",
 			startTime: 1.5

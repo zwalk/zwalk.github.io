@@ -13,11 +13,6 @@ declare global {
   }
 }
 
-// style({ transform: 'translateX(0)', offset: 0.1 }),
-//   style({ transform: 'translateX(5px)', offset: 0.2 }),
-//   style({ transform: 'translateX(-5px)', offset: 0.3 }),
-//   style({ transform: 'translateX(5px)', offset: 0.4 }),
-//   style({ transform: 'translateX(0)', offset: 0.5 })
 @Component({
   selector: 'app-connect',
   templateUrl: './connect.component.html',
@@ -67,6 +62,7 @@ export class ConnectComponent {
   shake : boolean = false;
   formSuccess = false;
   formError = false;
+  formSubmissionLoading = false;
 
   ngAfterViewInit() {
     grecaptcha.ready(() => {
@@ -86,6 +82,7 @@ export class ConnectComponent {
   }
 
   async onSubmit() {
+    this.formSubmissionLoading = true;
     const form = this.formGroup;
     this.token = grecaptcha.getResponse();
     form.patchValue({ "g-recaptcha-response": this.token });
@@ -99,6 +96,7 @@ export class ConnectComponent {
         },
         body: JSON.stringify(form.value)
       }).then((response) => {
+        this.formSubmissionLoading = false;
         if (response.ok) {
           this.formSuccess = true;
         } else {
@@ -106,6 +104,7 @@ export class ConnectComponent {
         }
       })
     }
+    this.formSubmissionLoading = false;
   }
 
   validate(form : FormGroup) {
@@ -129,7 +128,6 @@ export class ConnectComponent {
         }
       }
     }
-    console.log(form);
     this.shakeForm();
     this.formatRequiredList();
   }
@@ -143,6 +141,13 @@ export class ConnectComponent {
     if (captcha) {
       captcha.style.border = '';
     }
+  }
+
+  resetForm() {
+    this.resetValidations();
+    this.formError = false;
+    this.formSuccess = false;
+    this.formSubmissionLoading = false;
   }
 
   toggleInvalid(field : string) {

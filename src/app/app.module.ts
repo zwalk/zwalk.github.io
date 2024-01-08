@@ -17,7 +17,8 @@ import { UnknownRouteComponent } from './v2/unknown-route/unknown-route.componen
 import { AboutComponent } from './v2/about/about.component';
 import { PageTitleComponent } from './v2/page-title/page-title.component';
 import { ConnectComponent } from './v2/connect/connect.component';
-import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
@@ -48,6 +49,7 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng
     RecaptchaFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
+    LayoutModule
   ],
   providers: [
     provideAnimations(),

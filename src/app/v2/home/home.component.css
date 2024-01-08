@@ -40,6 +40,12 @@ img {
 	font-weight: bold;
 }
 
+#phone-name {
+	font-family: 'Amatic SC', monospace;
+	font-size: 2rem;
+	color: #242424;
+}
+
 #title, #name {
 	color: #242424;
 	text-align: right;
@@ -48,6 +54,12 @@ img {
 
 #title {
 	font-family: 'IBM Plex Mono', monospace;
+}
+
+#phone-title {
+	color: #242424;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: .75rem;
 }
 
 .home-image-container {
@@ -89,3 +101,6 @@ app-tile {
 	flex-basis: 45%;
 }
 
+.flex-column {
+	flex-direction: column;
+}

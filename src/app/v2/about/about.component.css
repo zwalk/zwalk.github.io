@@ -14,7 +14,7 @@ app-page-title {
 	align-items: flex-start;
 	box-sizing: border-box;
 	position: relative;
-	margin-bottom: 5%;
+	margin-bottom: 3%;
 }
 
 .about-img-container {
@@ -33,7 +33,6 @@ app-page-title {
 	display: flex;
 	justify-content: center;
 	flex-basis: 60%;
-	/* border: solid; */
 	height: 100%;
 	border-top-right-radius: 5%;
 	border-bottom-right-radius: 5%;

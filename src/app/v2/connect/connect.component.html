@@ -9,7 +9,28 @@
 				<div class="form-header">
 					Email Me
 				</div>
-				<div class="overlay">Thank you for contacting me! I will get back to you shortly.</div>
+				<div class="overlay" *ngIf="formSuccess || formError || formSubmissionLoading">
+					<div class="lds-ellipsis" *ngIf="formSubmissionLoading">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+					<div class="success-overlay" *ngIf="formSuccess">
+						<img src="assets/v2/img/checkmark.png"/>
+						<div class="success-message-and-button">
+							<h3>Thank you for contacting me! I will get back to you shortly.</h3>
+							<button (click)="resetForm()">Send another message</button>
+						</div>
+					</div>
+					<div class="error-overlay" *ngIf="formError">
+						<img src="assets/v2/img/error.png" />
+						<div class="success-message-and-button">
+							<h3>An error occured when trying to send your message.</h3>
+							<button (click)="resetForm()">Try again</button>
+						</div>
+					</div>
+				</div>
 				<p *ngIf="requiredList.length > 0" class="alert">{{requiredList}} {{beingVerb}} required</p>
 				<p *ngIf="!emailIsValid" class="alert">Invalid Email entered</p>
 				<form id="contact-form" [formGroup]="formGroup" (submit)="onSubmit()">
