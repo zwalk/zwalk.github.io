@@ -1,3 +1,36 @@
+/* phone css */
+.x-large-label {
+	font-size: x-large;
+}
+
+.small-label {
+	font-size: small;
+}
+
+.phone-tile p {
+	text-align: center;
+	font-family: 'IBM Plex Mono',
+		monospace;
+	font-weight: bolder;
+	position: absolute;
+	color: #f0eae5;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-shadow: 0 0 10px darkblue, 0 0 12px slategray;
+}
+
+.phone-tile {
+	flex-basis: 45%;
+	margin-bottom: 6%;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	border-radius: 15%;
+	cursor: pointer;
+}
+/* end phone */
+
 .tile {
 	flex-basis: 45%;
 	margin-bottom: 6%;
@@ -9,14 +42,22 @@
 	cursor: pointer;
 }
 
-.tile video {
+.tile video, .phone-tile video {
 	width: 100%;
 	display: block;
 	filter: blur(1.5px);
 }
 
-.tile:hover {
+.phone-tile video {
+	filter: blur(0px);
+}
+
+.tile:hover, .phone-tile:hover, .phone-tile:focus {
 	transform: scale(1.1);
+}
+
+.phone-tile:focus {
+	border-color: #008296;
 }
 
 .tile p {

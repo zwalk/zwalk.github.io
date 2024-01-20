@@ -1,12 +1,20 @@
-<div class="work-tile" (mouseenter)="showOverlay()" (mouseleave)="hideOverlay()" (click)="goToUrl()">
-	<div class="work-logo-container" (mouseenter)="showOverlay()">
+<div 
+	class="{{getCSSPrefix('work-tile')}}"
+	(mouseenter)="showOverlay()"
+	(mouseleave)="hideOverlay()"
+	(click)="goToUrl()" 
+	*ngIf="workTile" 
+	[@simpleFadeAnimation]="'in'"
+	(@simpleFadeAnimation.start)="updateAnimationState('running')"
+	(@simpleFadeAnimation.done)="updateAnimationState('stable')" >
+	<div class="{{getCSSPrefix('work-logo-container')}}" (mouseenter)="showOverlay()">
 		<img src="{{workTile.img}}" (mouseenter)="showOverlay()">
 			<p [ngClass]="{show: shouldShowOverlay, hidden: !shouldShowOverlay}" class="overlay" (mouseenter)="showOverlay()">
 				{{workTile.overlayText}}</p>
 	</div>
 	<div class="work-metadata">
-		<h4 *ngFor="let role of workTile.roles" class="role">{{role.jobTitle}}<span
-				*ngIf="role.subTitle">{{role.subTitle}}</span></h4>
-		<p class="date">{{workTile.dates}}</p>
+		<h4 *ngFor="let role of workTile.roles" class="role" [ngClass]="isPhone ? 'small-font' : ''">{{role.jobTitle}}<span
+				*ngIf="role.subTitle" [ngClass]="isPhone ? 'x-small-font' : ''"><br *ngIf="isPhone">{{role.subTitle}}</span></h4>
+		<p class="date" [ngClass]="isPhone ? 'small-font' : ''">{{workTile.dates}}</p>
 	</div>
 </div>

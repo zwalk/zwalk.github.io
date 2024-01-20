@@ -1,3 +1,98 @@
+/* phone css */
+.phone-connect-content-container {
+	z-index: 1;
+	flex-basis: 65%;
+	width: 97%;
+	margin: 0 auto;
+	display: flex;
+	margin-bottom: 3%;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.phone-connect-form-container {
+	flex-basis: 91%;
+	position: relative;
+	background: #242424;
+	border-radius: 15px;
+
+	&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 20px;
+			right: 20px;
+			bottom: 0;
+			border-radius: 15px;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, .4);
+			z-index: -1;
+	}
+}
+
+.phone-social-icons {
+	display: flex;
+	justify-content: center;
+}
+
+.phone-social-icons div {
+	flex-basis: 13%;
+	filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .4));
+	transition: ease-in-out 1s;
+	display: block;
+}
+
+#phone-contact-form {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	height: 93%;
+	margin: 0 auto;
+}
+
+.phone-form-inputs {
+	height: 57%;
+}
+
+#phone-contact-form textarea {
+	height: 42%;
+	resize: none;
+}
+
+#phone-contact-form input, form textarea {
+	width: 100%;
+	padding: 10px 0;
+	background: none;
+	border: none;
+	border-bottom: 1px solid #666;
+	color: #ddd;
+	font-size: 14px;
+	text-transform: uppercase;
+	outline: none;
+	transition: border-color .2s;
+	font-family: 'IBM Plex Mono', monospace;
+
+	&::placeholder {
+		color: #666
+	}
+
+	&:focus {
+		border-bottom-color: #ddd;
+	}
+}
+
+.phone-connect-form-container .alert {
+	font-size: x-small;
+}
+
+.phone-captcha-and-submit {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 30%;
+	justify-content: center;
+}
+/*  end phone css */
+
 .connect-content-container {
 	z-index: 1;
 	flex-basis: 70%;
@@ -40,7 +135,7 @@
 	color: #f0eae5;
 }
 
-form {
+#contact-form {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -49,12 +144,12 @@ form {
 	margin: 0 auto;
 }
 
-form textarea {
+#contact-form textarea {
 	height: 200px;
 	resize: none;
 }
 
-form input, form textarea {
+#contact-form input, form textarea {
 	width: 100%;
 	padding: 10px 0;
 	background: none;
@@ -115,7 +210,7 @@ ng-hcaptcha {
 	margin-left: .5%;
 }
 
-.social-icons a {
+.social-icons div {
 	flex-basis: 10%;
 	filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .4));
 	transition: ease-in-out 1s;
@@ -255,15 +350,12 @@ button {
 	z-index: 2;
 }
 
-button:hover {
-	background-color: #f7fafa;
-	color: #242424;
+#contact-form button:hover {
+	color: #008296;
 }
 
-button:focus {
+#contact-form button:focus {
 	border-color: #008296;
-	box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
-	outline: 0;
 }
 
 .success-message-and-button {
@@ -274,4 +366,9 @@ button:focus {
 .success-message-and-button button {
 	width: 40%;
 	align-self: center;
+}
+
+.phone-captcha {
+	margin: 0 auto;
+	transform: scale(0.9);
 }

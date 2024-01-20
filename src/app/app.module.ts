@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { V1Component } from './v1/v1.component';
@@ -19,8 +18,13 @@ import { PageTitleComponent } from './v2/page-title/page-title.component';
 import { ConnectComponent } from './v2/connect/connect.component';
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-
+import { provideHttpClient } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { LeavingModalComponent } from './v2/leaving-modal/leaving-modal.component';
+import { MatButtonModule } from '@angular/material/button'
+
 
 
 @NgModule({
@@ -38,7 +42,8 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng
     UnknownRouteComponent,
     AboutComponent,
     PageTitleComponent,
-    ConnectComponent
+    ConnectComponent,
+    LeavingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -49,11 +54,17 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng
     RecaptchaFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    LayoutModule
+    LayoutModule,
+    MatIconModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
+    provideHttpClient(),
     provideAnimations(),
-    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LcPYEcpAAAAAKGbAwbbbd_SvY65srwzeXUP7cdn' }],
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LcPYEcpAAAAAKGbAwbbbd_SvY65srwzeXUP7cdn' },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { Tiles } from '../constants/Tiles';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReCaptchaV3Service } from "ng-recaptcha";
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatDialog, MatDialogRef, MatDialogState } from '@angular/material/dialog';
+import { LeavingModalComponent } from '../leaving-modal/leaving-modal.component';
 
 
 declare const grecaptcha: any;
@@ -11,6 +14,11 @@ declare global {
   interface Window {
     grecaptcha: any;
   }
+}
+
+enum SocialLinks {
+  "https://www.linkedin.com/in/zswalker/",
+  "https://github.com/zwalk"
 }
 
 @Component({
@@ -63,6 +71,52 @@ export class ConnectComponent {
   formSuccess = false;
   formError = false;
   formSubmissionLoading = false;
+  size : string = 'normal';
+  isPhone : boolean = false;
+  dialogRef : MatDialogRef<LeavingModalComponent> | undefined;
+
+  constructor(
+    private observer : BreakpointObserver,
+    private dialog : MatDialog) {}
+
+  ngOnInit() {
+    this.onResize();
+  }
+
+  @HostListener('window:resize,', ['$event'])
+  onResize() {
+    this.observer.observe(Breakpoints.HandsetPortrait)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = true;
+      } else {
+        this.isPhone = false;
+      }
+    })
+  }
+
+  openModal(link : string) {
+    if (this.dialogRef?.getState() == MatDialogState.OPEN) return;
+    if (Object.values(SocialLinks).includes(link)) {
+      this.dialogRef = this.dialog.open(LeavingModalComponent, {
+        data: {
+          link: link
+        },
+        width: '500px',
+        direction: 'ltr'
+      });
+    } else {
+      alert('WARNING: the link you attempted to follow appears to have been tampered with.')
+    }
+  }
+
+  getCSSPrefix(name : string) {
+    let prefix : string = '';
+    if (this.isPhone) {
+      prefix = 'phone-'
+    }
+    return prefix + name;
+  }
 
   ngAfterViewInit() {
     grecaptcha.ready(() => {
@@ -178,13 +232,13 @@ export class ConnectComponent {
   }
 
   spin(el : HTMLElement) {
-    if (el.nodeName == 'A') {
+    if (el.nodeName == 'DIV') {
       el.classList.add('spin');
     }
   }
 
   backToStart(el : HTMLElement) {
-    if (el.nodeName == 'A') {
+    if (el.nodeName == 'DIV') {
       el.classList.remove('spin');
     }
   }

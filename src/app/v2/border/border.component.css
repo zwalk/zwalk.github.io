@@ -1,4 +1,4 @@
-.border {
+.border, .phone-border {
 	z-index: 0;
 	position: absolute;
 	width: 80%;
@@ -8,10 +8,10 @@
 	transform: translate(-50%, -50%);
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: space-between;
 }
 
-.border:after {
+.border:after, .phone-border:after {
 	z-index: 0;
 	content: '';
 	position: absolute;
@@ -27,8 +27,22 @@
 	background-size: 300% 300%;
 }
 
-.border.in:after {
+.phone-border:after {
+	border-width: 1rem;
+}
+
+.border.in:after ,.phone-border.in:after {
 	animation: frame-enter 1.25s forwards ease-in reverse;
+}
+
+.phone-border {
+	height: 88%;
+	top: 53%;
+	width: 85%;
+}
+
+.flex-end {
+	justify-content: flex-end;
 }
 
 @keyframes frame-enter {
@@ -52,3 +66,5 @@
 		-webkit-clip-path: polygon(0% 100%, 2rem 100%, 2rem 100%, 2rem 100%, 2rem 100%, 2rem 100%, 2rem 100%, 2rem 100%, 2rem 100%, 0% 100%);
 	}
 }
+
+    

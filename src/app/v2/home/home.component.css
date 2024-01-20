@@ -1,3 +1,87 @@
+/* Phone CSS classes */
+#phone-name {
+	font-family: 'Amatic SC', monospace;
+	font-size: 5rem;
+	color: #242424;
+	text-align: center;
+}
+
+#phone-title {
+	color: #242424;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.phone-name-and-title-container {
+	height: 19%;
+}
+
+.phone-home-banner {
+	display: flex;
+	justify-content: flex-end;
+	height: 100%;
+	flex-direction: column;
+	animation: 1s ease-in 0s 1 slideUpAndFocus;
+}
+
+.phone-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	margin: 0 auto;
+	margin-bottom: 5%;
+}
+
+.divider {
+	background-color: #000;
+	width: 60%;
+	height: .5%;
+	margin: 0 auto;
+}
+
+.phone-tile-container {
+	display: flex;
+	flex-basis: 39%;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.phone-zach-image {
+	-webkit-filter: drop-shadow(20px 45px 45px #242424) invert(5%);
+	filter: drop-shadow(0px 10px 40px #242424) invert(5%);
+	position: absolute;
+	bottom: 0;
+	height: 100%;
+	width: auto;
+}
+
+@keyframes slideUpAndFocus {
+	0% {
+		transform: translateY(2%);
+		filter: blur(4px);
+	}
+
+	100% {
+		transform: translateY(0px);
+		filter: blur(0px);
+	}
+}
+
+.phone-home-image-container {
+	display: flex;
+	justify-content: center;
+	flex-basis: 46%;
+	z-index: 1;
+	position: relative;
+	margin-top: 3%;
+}
+
+/* phone end */
+
+/*  Desktop under 4k resolution */
 img {
 	width: 100%;
 }
@@ -13,11 +97,11 @@ img {
 }
 
 .info {
+	margin-left: 5%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin-right: 5%;
 	flex-basis: 40%;
 	animation: 1s ease-in 0s 1 slideInFromRightAndFocus;
 }
@@ -40,12 +124,6 @@ img {
 	font-weight: bold;
 }
 
-#phone-name {
-	font-family: 'Amatic SC', monospace;
-	font-size: 2rem;
-	color: #242424;
-}
-
 #title, #name {
 	color: #242424;
 	text-align: right;
@@ -56,14 +134,8 @@ img {
 	font-family: 'IBM Plex Mono', monospace;
 }
 
-#phone-title {
-	color: #242424;
-	font-family: 'IBM Plex Mono', monospace;
-	font-size: .75rem;
-}
-
 .home-image-container {
-	flex-basis: 35%;
+	flex-basis: 25%;
 	z-index: 1;
 	position: relative;
 	height: 100%;
@@ -99,8 +171,4 @@ img {
 
 app-tile {
 	flex-basis: 45%;
-}
-
-.flex-column {
-	flex-direction: column;
 }

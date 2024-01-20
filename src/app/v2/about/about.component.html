@@ -3,20 +3,16 @@
 	<app-page-title
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
-	<div class="about-container">
-		<div class="about-img-container">
+	<div class="{{getCSSPrefix('about-container')}}">
+		<div class="background" *ngIf="isPhone"></div>
+		<div class="about-img-container" *ngIf="!isPhone">
 			<img src="assets/v2/img/zwalker_hs.jpg">
 		</div>
-		<div class="about-info-container">
-			<div class="about-info">
-								<div>
-									<p>Hi, I'm Zach. I love to code! I am based in the Columbus, Ohio area with my wife, our Basset Hound, and our cat. I have experience in 
-										multiple industries building and maintaining enterprise code. Prior to 2019, My career path was in sales, but I found myself wanting to 
-										pursue my passion for software. I went through the Tech Elevator coding bootcamp program and never looked back! I am beyond grateful 
-										for the opportunity I have had since then and the great people I have gotten to meet and work with. My interests
-										outside of programming are traveling with my wife, good coffee, bourbon and rye whiskey, gaming, and learning the guitar.
-									</p>
-								</div>
+		<div class="{{getCSSPrefix('about-info-container')}}">
+			<div class="{{getCSSPrefix('about-info')}}">
+				<div>
+					<p>{{message}}</p>
+				</div>
 				<div class="experience-and-tech">
 					<h2>Full Stack Software Engineer <span *ngIf="years">with {{years}}+ years experience</span></h2>
 					<div>

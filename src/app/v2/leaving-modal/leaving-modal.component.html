@@ -1,0 +1,8 @@
+<h4 class="center" mat-dialog-title>You are about to leave https://www.zwalker.dev</h4>
+<div class="center" mat-dialog-content>
+  <p>Do you want to visit {{data.link}}?</p>
+</div>
+<div class="center" mat-dialog-actions>
+  <button mat-raised-button (click)="no()" cdkFocusInitial>No Thanks</button>
+  <button mat-raised-button (click)="followLink()">Yes</button>
+</div>

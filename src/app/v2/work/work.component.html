@@ -3,10 +3,22 @@
 	<app-page-title
 	[title]="this.label"
 	[tiles]="this.tiles"
+	[smallLabels]="true"
 	[buttonText]="'Download Resume'"
 	[buttonFunction]="goToResume"></app-page-title>
-	<div class="work-content">
-		<app-work-tile *ngFor="let workTile of workTiles" [workTile]=workTile>
-		</app-work-tile>
+	<div class="work-content" *ngIf="!isPhone">
+		<app-work-tile *ngFor="let workTile of workTiles" [workTile]=workTile></app-work-tile>
 	</div>
+	<!-- for small screens -->
+	<div class="phone-work-content" *ngIf="isPhone">
+		<app-work-tile [workTile]="currentTile" (animationEvent)="updateAnimationState($event)"></app-work-tile>
+		<div class="controls">
+			<div class="material-icons" (click)="setPause(true); fadeBack()">arrow_back_ios</div>
+			<div class="material-icons" *ngIf="paused" (click)="setPause(false)">play_circle</div>
+			<div class="material-icons" *ngIf="!paused" (click)="setPause(true)">stop_circle</div>
+			<div *ngFor="let tile of workTiles" class="nav-bubble" (click)="fadeToTile(tile)" [ngClass]="isCurrentTile(tile) ? 'active-bubble' : ''"></div>
+			<div class="material-icons" (click)="setPause(true); fade(true)">arrow_forward_ios</div>
+		</div>
+	</div>
+	<!-- end small screen -->
 </app-border>

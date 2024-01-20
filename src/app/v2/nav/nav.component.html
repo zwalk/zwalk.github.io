@@ -1,6 +1,6 @@
-<div id="nav">
-	<div class="logo" routerLink="/v2/home">
-		<img src="assets/v2/img/zw_logo.png">
+<div id="{{getCSSPrefix('nav')}}">
+	<div class="{{getCSSPrefix('logo')}}" routerLink="/v2/home">
+		<img class="{{getCSSPrefix('')}}" src="assets/v2/img/zw_logo.png">
 	</div>
 	<button routerLink='/v1' outerLinkActive='active' ariaCurrentWhenActive="page">
 		Go to 2019 Version

@@ -4,59 +4,67 @@
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
 
-	<div class="connect-content-container">
-			<div [@shake]="shake ? 'true' : 'false'" (@shake.done)="shake = false" class="connect-form-container">
-				<div class="form-header">
-					Email Me
-				</div>
-				<div class="overlay" *ngIf="formSuccess || formError || formSubmissionLoading">
-					<div class="lds-ellipsis" *ngIf="formSubmissionLoading">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-					<div class="success-overlay" *ngIf="formSuccess">
-						<img src="assets/v2/img/checkmark.png"/>
-						<div class="success-message-and-button">
-							<h3>Thank you for contacting me! I will get back to you shortly.</h3>
-							<button (click)="resetForm()">Send another message</button>
-						</div>
-					</div>
-					<div class="error-overlay" *ngIf="formError">
-						<img src="assets/v2/img/error.png" />
-						<div class="success-message-and-button">
-							<h3>An error occured when trying to send your message.</h3>
-							<button (click)="resetForm()">Try again</button>
-						</div>
-					</div>
-				</div>
-				<p *ngIf="requiredList.length > 0" class="alert">{{requiredList}} {{beingVerb}} required</p>
-				<p *ngIf="!emailIsValid" class="alert">Invalid Email entered</p>
-				<form id="contact-form" [formGroup]="formGroup" (submit)="onSubmit()">
-					<div>
-						<input [ngClass]="invalidInputs.includes('name') ? 'alert-input' : ''" type="text" name="name" placeholder="Name" formControlName="name" required>
-						<input [ngClass]="invalidInputs.includes('email') ? 'alert-input' : ''" type="email" name="email" placeholder="Email" formControlName="email" required email>
-						<textarea [ngClass]="invalidInputs.includes('message') ? 'alert-input' : ''" name="message" placeholder="Message" formControlName="message" required></textarea>
-					</div>
-					<div class="captcha-and-submit" [ngClass]="requiredList.length > 0 ? 'flex-start' : ''">
-						<div class="form-group">
-							<div id="captcha_element"
-								class="g-recaptcha"
-								data-sitekey="6LcAh0cpAAAAABsJHjujfrSlV-DP9Vy9LpakFChq"
-								data-theme="dark"></div>
-						</div>
-						<button class="form-button" type="submit">Send</button>
-					</div>
-				</form>
+	<div class="{{getCSSPrefix('connect-content-container')}}">
+		<div class="phone-social-icons" *ngIf="isPhone">
+			<div (click)= "openModal('https://www.linkedin.com/in/zswalker/')">
+				<img src="assets/v2/img/linkedin_icon.png" alt="icon to Zach's LinkedIn">
 			</div>
-			<div class="social-icons">
-				<a #linkedin href="https://www.linkedin.com/in/zswalker/" (mouseenter)="spin(linkedin)" (mouseleave)="backToStart(linkedin)">
-					<img src="assets/v2/img/linkedin_icon.png" alt="icon to Zach's LinkedIn">
-				</a>
-				<a #github href="https://github.com/zwalk" (mouseenter)="spin(github)" (mouseleave)="backToStart(github)">
-					<img src="assets/v2/img/github_icon.png" alt="icon to Zach's Github account">
-				</a>
+			<div #github (click)="openModal('https://github.com/zwalk')">
+				<img src="assets/v2/img/github_icon.png" alt="icon to Zach's Github account">
 			</div>
+		</div>
+		<div [@shake]="shake ? 'true' : 'false'" (@shake.done)="shake = false" class="{{getCSSPrefix('connect-form-container')}}">
+			<div class="form-header">
+				Email Me
+			</div>
+			<div class="overlay" *ngIf="formSuccess || formError || formSubmissionLoading">
+				<div class="lds-ellipsis" *ngIf="formSubmissionLoading">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="success-overlay" *ngIf="formSuccess">
+					<img src="assets/v2/img/checkmark.png"/>
+					<div class="success-message-and-button">
+						<h3>Thank you for contacting me! I will get back to you shortly.</h3>
+						<button (click)="resetForm()">Send another message</button>
+					</div>
+				</div>
+				<div class="error-overlay" *ngIf="formError">
+					<img src="assets/v2/img/error.png" />
+					<div class="success-message-and-button">
+						<h3>An error occured when trying to send your message.</h3>
+						<button (click)="resetForm()">Try again</button>
+					</div>
+				</div>
+			</div>
+			<p *ngIf="requiredList.length > 0" class="alert">{{requiredList}} {{beingVerb}} required</p>
+			<p *ngIf="!emailIsValid" class="alert">Invalid Email entered</p>
+			<form id="{{getCSSPrefix('contact-form')}}" [formGroup]="formGroup" (submit)="onSubmit()">
+				<div class="{{getCSSPrefix('form-inputs')}}">
+					<input [ngClass]="invalidInputs.includes('name') ? 'alert-input' : ''" type="text" name="name" placeholder="Name" formControlName="name" required>
+					<input [ngClass]="invalidInputs.includes('email') ? 'alert-input' : ''" type="email" name="email" placeholder="Email" formControlName="email" required email>
+					<textarea [ngClass]="invalidInputs.includes('message') ? 'alert-input' : ''" name="message" placeholder="Message" formControlName="message" required></textarea>
+				</div>
+				<div class="{{getCSSPrefix('captcha-and-submit')}}">
+					<div class="form-group">
+						<div id="captcha_element"
+							class="g-recaptcha {{getCSSPrefix('captcha')}}"
+							data-sitekey="6LcAh0cpAAAAABsJHjujfrSlV-DP9Vy9LpakFChq"
+							data-theme="dark"></div>
+					</div>
+					<button class="form-button" type="submit">Send</button>
+				</div>
+			</form>
+		</div>
+		<div class="social-icons" *ngIf="!isPhone">
+			<div #linkedin (click)= "openModal('https://www.linkedin.com/in/zswalker/')" (mouseenter)="spin(linkedin)" (mouseleave)="backToStart(linkedin)">
+				<img src="assets/v2/img/linkedin_icon.png" alt="icon to Zach's LinkedIn">
+			</div>
+			<div #github (click)="openModal('https://github.com/zwalk')" (mouseenter)="spin(github)" (mouseleave)="backToStart(github)">
+				<img src="assets/v2/img/github_icon.png" alt="icon to Zach's Github account">
+			</div>
+		</div>
 	</div>
 </app-border>

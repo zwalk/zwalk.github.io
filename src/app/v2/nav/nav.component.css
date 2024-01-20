@@ -1,3 +1,27 @@
+/* phone  */
+.phone-logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 1%;
+	cursor: pointer;
+	flex-basis: 14%;
+}
+
+#phone-nav {
+	font-size: x-large;
+	font-family: 'IBM Plex Mono', monospace;
+	background-color: #242424;
+	color: #f0eae5;
+	z-index: 1;
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	height: 4%;
+}
+/* end phone */
+
 #info {
 	display: flex;
 	flex-direction: column;
@@ -40,7 +64,7 @@ button:hover {
 	justify-content: center;
 	margin-left: 1%;
 	cursor: pointer;
-	flex-basis: 2%;
+	flex-basis: 3%;
 }
 
 h1 {

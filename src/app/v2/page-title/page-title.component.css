@@ -1,3 +1,30 @@
+/* phone rules */
+.phone-title-and-tile-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 1%;
+	width: 100%;
+	height: 30%;
+}
+
+.phone-page-title-container {
+	flex-basis: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 2%;
+}
+
+.phone-page-title {
+	font-family: 'Amatic SC', monospace;
+	font-size: 6rem;
+}
+
+/* end phone */
+
+
 .title-and-tile-container {
 	display: flex;
 	justify-content: space-evenly;

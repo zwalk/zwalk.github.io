@@ -1,9 +1,9 @@
-<div class="tile" 
+<div class="{{getCSSPrefix('tile')}}" 
 (mouseenter)="playVideo()"
 (mouseleave)="resetVideo()"
 routerLink="{{tile.pageUrl}}">
-	<video #vid loop preload>
+	<video #vid loop playsinline preload poster="{{tile.imgUrl}}">
 		<source src="{{tile.videoUrl}}#t={{tile.startTime}}">
 	</video>
-	<p>{{tile.label}}</p>
+	<p [ngClass]="smallLabels ? 'small-label' : 'x-large-label'">{{tile.label}}</p>
 </div>

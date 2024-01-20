@@ -1,3 +1,82 @@
+/* Phone CSS */
+	/* Portrait */
+	.phone-work-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		position: relative;
+		z-index: 1;
+		margin: 0 auto;
+		margin-bottom: 5%;
+		flex-basis: 60%;
+		width: 95%;
+	}
+
+	.phone-work-content app-work-tile {
+		flex-basis: 100%;
+		border-radius: 5%;
+	}
+
+	.phone-work-tiles-container {
+		display: flex;
+		height: 75%;
+		justify-content: center;
+	}
+
+	.controls {
+		display: flex;
+		justify-content: space-evenly;
+		width: 75%;
+		align-self: center;
+	}
+
+	.controls button {
+		background-color: #f0eae5;
+		border: 1px solid #adb0b0;
+		border-radius: 8px;
+		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+		box-sizing: border-box;
+		color: #0f1111;
+		cursor: pointer;
+		display: inline-block;
+		font-family: "IBM Plex Mono", sans-serif;
+		font-size: small;
+		line-height: 29px;
+		padding: 0 10px 0 11px;
+		position: relative;
+		text-align: center;
+		text-decoration: none;
+		user-select: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+		vertical-align: middle;
+		z-index: 2;
+	}
+
+	.controls button:focus {
+		border-color: #008296;
+		box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+		outline: 0;
+	}
+
+	.nav-bubble {
+		display: inline-block;
+		width: .7rem;
+		height: .7rem;
+		background-color: #333;
+		background-clip: content-box;
+		border: 0.25rem solid transparent;
+		border-radius: 50%;
+		font-size: 0;
+		transition: transform 0.1s;
+	}
+
+	.active-bubble {
+		background-color: #008296;
+	}
+
+/* end Phone */
+
 .title-and-tile-container {
 	display: flex;
 	justify-content: space-between;
