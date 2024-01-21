@@ -22,5 +22,6 @@ export class LeavingModalComponent {
 
     followLink() {
       window.location.href = this.data.link;
+      this.dialogRef.close();
     }
 }
