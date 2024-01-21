@@ -30,6 +30,7 @@ export class TileComponent {
   @ViewChild('vid', { static: true }) videoRef: ElementRef<HTMLVideoElement> | undefined;
   video: HTMLVideoElement | undefined;
   isPhone : boolean = false;
+  isTablet : boolean = false;
   
   @Input() smallLabels : boolean = true;
 
@@ -49,8 +50,19 @@ export class TileComponent {
     .subscribe(result => {
       if (result.matches) {
         this.isPhone = true;
+        this.isTablet = false;
       } else {
         this.isPhone = false;
+      }
+    })
+
+    this.observer.observe(Breakpoints.Tablet)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
       }
     })
   }

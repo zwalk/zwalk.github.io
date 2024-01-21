@@ -81,6 +81,35 @@
 
 /* phone end */
 
+/* tablet css */
+.tablet-home-banner {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	.name-and-title-container {
+		padding-right: 5%;
+	}
+
+	.info {
+		flex-direction: row;
+		flex-basis: 100%;
+		justify-content: space-evenly;
+		margin-left: 0;
+
+		.home-image-container {
+			flex-basis: 63%;
+		}
+	
+		.tile-container {
+			z-index: 1;
+			flex-basis: 28%;
+			flex-direction: column;
+		}
+	}
+}
+/* end tablet */
+
 /*  Desktop under 4k resolution */
 img {
 	width: 100%;
@@ -171,4 +200,15 @@ img {
 
 app-tile {
 	flex-basis: 45%;
+}
+
+.landscape-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.display-none {
+	display: none;
 }

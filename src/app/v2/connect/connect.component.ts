@@ -73,6 +73,7 @@ export class ConnectComponent {
   formSubmissionLoading = false;
   size : string = 'normal';
   isPhone : boolean = false;
+  isTablet : boolean = false;
   dialogRef : MatDialogRef<LeavingModalComponent> | undefined;
 
   constructor(
@@ -89,8 +90,19 @@ export class ConnectComponent {
     .subscribe(result => {
       if (result.matches) {
         this.isPhone = true;
+        this.isTablet = false;
       } else {
         this.isPhone = false;
+      }
+    })
+
+    this.observer.observe(Breakpoints.Tablet)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
       }
     })
   }
@@ -114,6 +126,9 @@ export class ConnectComponent {
     let prefix : string = '';
     if (this.isPhone) {
       prefix = 'phone-'
+    }
+    if (this.isTablet) {
+      prefix = 'tablet-'
     }
     return prefix + name;
   }

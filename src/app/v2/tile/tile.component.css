@@ -4,7 +4,7 @@
 }
 
 .small-label {
-	font-size: small;
+	font-size: small !important;
 }
 
 .phone-tile p {
@@ -72,4 +72,8 @@
 	transform: translate(-50%, -50%);
 	font-size: x-large;
 	text-shadow: 0 0 10px darkblue, 0 0 12px slategray;
+}
+
+.no-blur {
+	filter: blur(0px) !important;
 }

@@ -77,6 +77,25 @@
 
 /* end Phone */
 
+/* tablet  */
+.tablet-work-content {
+	display: flex;
+	justify-content: space-evenly;
+	position: relative;
+	z-index: 1;
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 9%;
+	flex-basis: 70%;
+	flex-wrap: wrap-reverse;
+
+	app-work-tile {
+		flex-basis: 35%;
+		height: 45%;
+	}
+}
+/* end tablet */
+
 .title-and-tile-container {
 	display: flex;
 	justify-content: space-between;

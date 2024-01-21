@@ -22,6 +22,78 @@
 }
 /* end phone */
 
+/* phone landscape */
+.phone-landscape-logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 1%;
+	cursor: pointer;
+	flex-basis: 7%;
+}
+
+#phone-landscape-nav {
+	font-size: large;
+	font-family: 'IBM Plex Mono', monospace;
+	background-color: #242424;
+	color: #f0eae5;
+	z-index: 1;
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	height: 6%;
+}
+/* end phone landscape */
+
+/* tablet */
+.tablet-logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 1%;
+	cursor: pointer;
+	flex-basis: 9%;
+}
+
+#tablet-nav {
+	font-size: 1.6rem;
+	font-family: 'IBM Plex Mono', monospace;
+	background-color: #242424;
+	color: #f0eae5;
+	z-index: 1;
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	height: 4%;
+}
+/* end tablet */
+
+/* tablet landscape */
+.tablet-landscape-logo {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 1%;
+	cursor: pointer;
+	flex-basis: 5%;
+}
+
+#tablet-landscape-nav {
+	font-size: 1.6rem;
+	font-family: 'IBM Plex Mono', monospace;
+	background-color: #242424;
+	color: #f0eae5;
+	z-index: 1;
+	position: sticky;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	height: 4%;
+}
+/* end tablet landscape */
+
 #info {
 	display: flex;
 	flex-direction: column;

@@ -47,6 +47,7 @@ export class WorkComponent {
     }
   ]
   isPhone : boolean = false;
+  isTablet : boolean = false;
   currentIndex = 0;
   currentTile : WorkTile | undefined = this.workTiles[this.currentIndex];
   source = interval(5000);
@@ -96,13 +97,28 @@ export class WorkComponent {
     .subscribe(result => {
       if (result.matches) {
         this.isPhone = true;
+        this.isTablet = false;
       } else {
         this.isPhone = false;
       }
     })
 
+    this.observer.observe(Breakpoints.Tablet)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
+      }
+    })
+
     if (this.isPhone) {
       this.subscription = this.source.subscribe(() => this.fade(false) )
+    }
+
+    if (this.isTablet) {
+      this.workTiles = this.workTiles.reverse();
     }
   }
 
@@ -163,6 +179,9 @@ export class WorkComponent {
     let prefix : string = '';
     if (this.isPhone) {
       prefix = 'phone-'
+    }
+    if (this.isTablet) {
+      prefix = 'tablet-';
     }
     return prefix + name;
   }

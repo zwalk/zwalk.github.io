@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Tiles } from '../constants/Tiles';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -40,6 +40,7 @@ export class EducationComponent {
   buttonText: string = 'Bonus pictures'
   spaceRule = 'flex-end';
   isPhone : boolean = false;
+  isTablet : boolean = false;
   shownTile : HTMLDivElement | undefined;
   hiddenTile : HTMLDivElement | undefined;
   hideAnimationState = 'stable';
@@ -51,24 +52,46 @@ export class EducationComponent {
   constructor(private observer : BreakpointObserver, private dialog : MatDialog) {}
 
   ngOnInit() {
+    this.onResize();
+  }
+
+
+  @HostListener('window:resize,', ['$event'])
+  onResize() {
     this.observer.observe(Breakpoints.HandsetPortrait)
-      .subscribe(result => {
-        if (result.matches) {
-          this.isPhone = true;
-        }
-      })
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = true;
+        this.isTablet = false;
+      } else {
+        this.isPhone = false;
+      }
+    })
+
+    this.observer.observe(Breakpoints.Tablet)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
+      }
+    })
   }
 
   getCSSPrefix(name : string) {
     let prefix : string = '';
     if (this.isPhone) {
-      prefix = 'phone-'
+      prefix = 'phone-';
+    }
+    if (this.isTablet) {
+      prefix = 'tablet-';
     }
     return prefix + name;
   }
 
   openModal(linkName : string, event: Event) {
-    if (this.shownTile || !this.isPhone) {
+    if (this.shownTile || (!this.isPhone && !this.isTablet)) {
       event.stopPropagation();
       const link = linkName == 'osu' ? ModalLinks.osu : ModalLinks.techElevator;
 
@@ -100,11 +123,11 @@ export class EducationComponent {
   }
 
   shouldShow(tile : HTMLDivElement) {
-    return this.isPhone && this.shownTile == tile &&  this.hideAnimationState == 'stable';
+    return (this.isPhone || this.isTablet) && this.shownTile == tile &&  this.hideAnimationState == 'stable';
   }
 
   isHidden(tile : HTMLDivElement) {
-    return this.isPhone && this.hiddenTile == tile;
+    return (this.isPhone || this.isTablet) && this.hiddenTile == tile;
   }
 
   setHideState(state : string) {
@@ -120,6 +143,6 @@ export class EducationComponent {
   }
 
   shouldWiden(tile : HTMLDivElement) {
-    return this.isPhone && this.widen == true && this.shownTile == tile;
+    return (this.isPhone || this.isTablet) && this.widen == true && this.shownTile == tile;
   }
 }

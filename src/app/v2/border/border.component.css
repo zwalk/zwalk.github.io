@@ -1,4 +1,4 @@
-.border, .phone-border {
+.border, .phone-border, .tablet-border {
 	z-index: 0;
 	position: absolute;
 	width: 80%;
@@ -11,7 +11,7 @@
 	justify-content: space-between;
 }
 
-.border:after, .phone-border:after {
+.border:after, .phone-border:after, .tablet-border:after {
 	z-index: 0;
 	content: '';
 	position: absolute;
@@ -31,13 +31,19 @@
 	border-width: 1rem;
 }
 
-.border.in:after ,.phone-border.in:after {
+.border.in:after ,.phone-border.in:after, .tablet-border.in:after {
 	animation: frame-enter 1.25s forwards ease-in reverse;
 }
 
 .phone-border {
 	height: 88%;
 	top: 53%;
+	width: 85%;
+}
+
+.tablet-border {
+	top: 52%;
+	height: 85%;
 	width: 85%;
 }
 

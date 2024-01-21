@@ -19,6 +19,7 @@ export class PageTitleComponent {
   hasButton: boolean = false;
   @Input() buttonFunction: ()=> void = () => {}; 
   isPhone : boolean = false;
+  isTablet : boolean = false;
   @Input() smallLabels : boolean = false;
 
   constructor(private observer : BreakpointObserver) {}
@@ -35,8 +36,19 @@ export class PageTitleComponent {
     .subscribe(result => {
       if (result.matches) {
         this.isPhone = true;
+        this.isTablet = false;
       } else {
         this.isPhone = false;
+      }
+    })
+
+    this.observer.observe(Breakpoints.Tablet)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
       }
     })
   }
@@ -45,6 +57,9 @@ export class PageTitleComponent {
     let prefix : string = '';
     if (this.isPhone) {
       prefix = 'phone-'
+    }
+    if (this.isTablet) {
+      prefix = 'tablet-';
     }
     return prefix + name;
   }

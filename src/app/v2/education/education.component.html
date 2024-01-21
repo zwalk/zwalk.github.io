@@ -4,7 +4,7 @@
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
 	<div class="{{getCSSPrefix('education-container')}}"
-		[ngClass]="{'scale': shouldShow(tE) || shouldShow(oSU)}">
+		[ngClass]="{'scale': (shouldShow(tE) || shouldShow(oSU)) && isPhone, 'tablet-scale': (shouldShow(tE) || shouldShow(oSU)) && isTablet}">
 		<div #tE
 		[@showDetail]="shouldShow(tE)"
 		(@showDetail.start)="setShowDetailState('running')"
@@ -23,16 +23,16 @@
 			<div class="right"></div>
 			<div class="top"></div>
 			<div class="bottom"></div>
-			<div class="{{getCSSPrefix('front')}}">
-				<mat-icon aria-hidden="false" fontIcon="close" *ngIf="isPhone && this.shownTile == tE"></mat-icon>
+			<div class="{{getCSSPrefix('front')}}" [ngClass]="{'tablet-front': isTablet}">
+				<mat-icon aria-hidden="false" fontIcon="close" *ngIf="(isPhone || isTablet) && this.shownTile == tE"></mat-icon>
 				<div 
 					class="{{getCSSPrefix('logo-and-info-container')}}"
 					[ngClass]="{'ht-30': this.shownTile == tE}">
-					<div (click)="openModal('tech-elevator', $event)" class="logo-container" *ngIf="!isPhone">
+					<div (click)="openModal('tech-elevator', $event)" class="logo-container" *ngIf="!isPhone && !isTablet">
 						<img src="assets/v2/img/tech_elevator2.png">
 					</div>
-					<div class="phone-logo-container" *ngIf="isPhone">
-						<img (click)="openModal('tech-elevator', $event)" [ngClass]="{'phone-logo-img': isPhone && this.shownTile == tE}" src="assets/v2/img/tech_elevator2.png">
+					<div class="phone-logo-container" *ngIf="isPhone || isTablet">
+						<img (click)="openModal('tech-elevator', $event)" [ngClass]="{'phone-logo-img': (isPhone || isTablet) && this.shownTile == tE}" src="assets/v2/img/tech_elevator2.png">
 					</div>
 					<div class="{{getCSSPrefix('info-container')}}">
 						<h3>Tech Elevator</h3>
@@ -40,7 +40,7 @@
 						<p class="{{getCSSPrefix('time')}}">Winter 2019</p>
 					</div>
 				</div>
-				<div class="{{getCSSPrefix('rec-container')}}" *ngIf="!isPhone || shouldShow(tE)">
+				<div class="{{getCSSPrefix('rec-container')}}" *ngIf="(!isPhone && !isTablet) || shouldShow(tE)">
 					<div class="quotes">
 						<img src="assets/v2/img/quotes2.png">
 					</div>
@@ -77,8 +77,8 @@
 			<div class="right"></div>
 			<div class="top"></div>
 			<div class="bottom"></div>
-			<div class="{{getCSSPrefix('front')}}">
-				<mat-icon aria-hidden="false" fontIcon="close" *ngIf="isPhone && this.shownTile == oSU"></mat-icon>
+			<div class="{{getCSSPrefix('front')}}" [ngClass]="{'tablet-front': isTablet}">
+				<mat-icon aria-hidden="false" fontIcon="close" *ngIf="(isPhone || isTablet) && this.shownTile == oSU"></mat-icon>
 				<div 
 					class="{{getCSSPrefix('logo-and-info-container')}}"
 					[ngClass]="{'ht-30': this.shownTile == oSU}">
@@ -94,7 +94,7 @@
 						<p class="{{getCSSPrefix('time')}}">2009 - 2013</p>
 					</div>
 				</div>
-				<div class="{{getCSSPrefix('rec-container')}} osu-rec-container" *ngIf="!isPhone || shouldShow(oSU)">
+				<div class="{{getCSSPrefix('rec-container')}} osu-rec-container" *ngIf="(!isPhone && !isTablet) || shouldShow(oSU)">
 					<div class="quotes">
 						<img src="assets/v2/img/quotes2.png">
 					</div>
@@ -112,6 +112,6 @@
 	</div>
 	<button (click)="flip()"
 	class="{{getCSSPrefix('button')}}"
-	[@hide]="this.shownTile != undefined && this.isPhone"
-	[ngClass]="{'hide': this.hideAnimationState == 'stable' && this.shownTile != undefined && this.isPhone}">{{buttonText}}</button>
+	[@hide]="this.shownTile != undefined && (this.isPhone || this.isTablet)"
+	[ngClass]="{'hide': this.hideAnimationState == 'stable' && this.shownTile != undefined && (this.isPhone || this.isTablet)}">{{buttonText}}</button>
 </app-border>

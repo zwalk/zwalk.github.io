@@ -24,6 +24,34 @@
 
 /* end phone */
 
+/* tablet */
+.tablet-title-and-tile-container {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 1%;
+	width: 100%;
+	height: 30%;
+
+	.tile-container {
+		flex-basis: 70%;
+	}
+}
+
+.tablet-page-title-container {
+	flex-basis: 40%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 2%;
+}
+
+.tablet-page-title {
+	font-family: 'Amatic SC', monospace;
+	font-size: 6rem;
+}
+/* end tablet */
+
 
 .title-and-tile-container {
 	display: flex;

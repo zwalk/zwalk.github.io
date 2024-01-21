@@ -1,0 +1,86 @@
+/* phone css */
+#phone-content-image {
+    border-radius: 20px;
+}
+
+.phone-subtitle {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.phone-message {
+    text-align: center;
+    font-size: .8rem;
+}
+
+.phone-tile-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+
+.phone-tile-container app-tile {
+    z-index: 1;
+    flex-basis: 30%;
+}
+/* end phone */
+
+/* tablet */
+#tablet-content-image {
+    border-radius: 20px;
+    width: 90%;
+}
+
+.tablet-subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.tablet-message {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.tablet-tile-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 5%;
+}
+
+.tablet-tile-container app-tile {
+    z-index: 1;
+    flex-basis: 30%;
+}
+/* end tablet */
+
+.content {
+    align-self: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.tile-container {
+	display: flex;
+    justify-content: center;
+}
+
+app-tile {
+	z-index: 1;
+	flex-basis: 10%;
+}
+
+#content-image {
+    width: 50%;
+    border-radius: 20px;
+}
+
+
+h1 {
+    text-align: center;
+}

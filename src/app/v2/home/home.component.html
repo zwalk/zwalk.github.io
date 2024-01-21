@@ -1,21 +1,38 @@
 <app-nav></app-nav>
 <div class="home-wrapper">
-	<app-border></app-border>
-	<div class="{{getCSSPrefix('home-banner')}}">
-		<div class="{{getCSSPrefix('name-and-title-container')}}">
-			<h1 id="{{getCSSPrefix('name')}}" *ngIf="isPhone">Zach Walker</h1>
-			<h3 id="{{getCSSPrefix('title')}}" *ngIf="isPhone">Software Engineer</h3>
+	<app-border>
+		<div *ngIf="isTablet" class="{{getCSSPrefix('home-banner')}}">
+			<div class="name-and-title-container">
+				<h1 [@fall]="fall" id="name">Zach Walker</h1>
+				<h3 [@fall]="fall" id="title">Software Engineer</h3>
+			</div>
+			<div class="info">
+				<div [@fall]="fall" class="home-image-container">
+					<img class="zach-image" src="assets/v2/img/me_nb3.png" />
+				</div>
+				<div [@fall]="fall" class="tile-container">
+					<app-tile *ngFor="let tile of tiles" [tile]=tile [smallLabels]="false"></app-tile>
+				</div>
+			</div>
 		</div>
-		<div class="{{getCSSPrefix('home-image-container')}}">
+		<div class="landscape-message" [@fadeIn]="showLandscapeMessage" [ngClass]="{'display-none': !showLandscapeMessage}">
+			<h1>Look what you did! Rotate me back to portrait!</h1>
+		</div>
+	</app-border>
+	<div *ngIf="!isTablet" class="{{getCSSPrefix('home-banner')}}">
+		<div *ngIf="isPhone" class="{{getCSSPrefix('name-and-title-container')}}">
+			<h1 [@fall]="fall" id="{{getCSSPrefix('name')}}">Zach Walker</h1>
+			<h3 [@fall]="fall" id="{{getCSSPrefix('title')}}">Software Engineer</h3>
+		</div>
+		<div [@fall]="fall" (@fall.done)="shouldShowLandscapeMessage()" class="{{getCSSPrefix('home-image-container')}}">
 			<img class="{{getCSSPrefix('zach-image')}}" src="assets/v2/img/me_nb3.png" />
 		</div>
-		<div *ngIf="isPhone" class="divider"></div>
+		<div [@fall]="fall" *ngIf="isPhone" class="divider"></div>
 		<div class="{{getCSSPrefix('info')}}">
-			<h1 id="{{getCSSPrefix('name')}}" *ngIf="!isPhone">Zach Walker</h1>
-			<h3 id="{{getCSSPrefix('title')}}" *ngIf="!isPhone">Software Engineer</h3>
-			<div class="{{getCSSPrefix('tile-container')}}">
+			<h1 [@fall]="fall" id="{{getCSSPrefix('name')}}" *ngIf="!isPhone">Zach Walker</h1>
+			<h3 [@fall]="fall" id="{{getCSSPrefix('title')}}" *ngIf="!isPhone">Software Engineer</h3>
+			<div [@fall]="fall" class="{{getCSSPrefix('tile-container')}}">
 				<app-tile *ngFor="let tile of tiles" [tile]=tile [smallLabels]="false"></app-tile>
 			</div>
 		</div>
 	</div>
-</div>

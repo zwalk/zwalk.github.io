@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Tiles } from '../constants/Tiles';
 import { DateTime } from 'luxon';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -15,6 +15,7 @@ export class AboutComponent {
   tiles = this.tileList.getFilteredTiles(this.label);
   years = this.getYears();
   isPhone : boolean = false;
+  isTablet : boolean = false;
   message : string = `
   Hi, I'm Zach. I love to write code! I am based in the Columbus, Ohio area with my wife, our Basset Hound, and our cat. I have experience in 
   multiple industries building and maintaining enterprise code. Prior to 2019, My career path was in sales, but I found myself wanting to 
@@ -26,22 +27,46 @@ export class AboutComponent {
   constructor(private observer : BreakpointObserver) {}
 
   ngOnInit() {
+    this.onResize();
+  }
+
+  @HostListener('window:resize,', ['$event'])
+  onResize() {
     this.observer.observe(Breakpoints.HandsetPortrait)
-      .subscribe(result => {
-        if (result.matches) {
-          this.isPhone = true;
-          this.message = `
-          Hi, I'm Zach. I love to code! I am based in the Columbus, Ohio area with my wife, our Basset Hound, and our cat. I have experience in 
-          multiple industries building and maintaining enterprise code. Thanks for stopping by!
-          `
-        }
-      })
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = true;
+        this.isTablet = false;
+      } else {
+        this.isPhone = false;
+      }
+    })
+
+    this.observer.observe(Breakpoints.Tablet)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
+      }
+    })
+
+    if (this.isPhone) {
+      this.message = `
+      Hi, I'm Zach. I love to code! I am based in the Columbus, Ohio area with my wife, our Basset Hound, and our cat. I have experience in 
+      multiple industries building and maintaining enterprise code. Thanks for stopping by!
+      `
+    }
   }
 
   getCSSPrefix(name : string) {
     let prefix : string = '';
     if (this.isPhone) {
       prefix = 'phone-'
+    }
+    if (this.isTablet) {
+      prefix = 'tablet-';
     }
     return prefix + name;
   }

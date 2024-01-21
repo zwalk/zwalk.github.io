@@ -4,8 +4,7 @@
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
 	<div class="{{getCSSPrefix('about-container')}}">
-		<div class="background" *ngIf="isPhone"></div>
-		<div class="about-img-container" *ngIf="!isPhone">
+		<div class="about-img-container" *ngIf="!isPhone && !isTablet">
 			<img src="assets/v2/img/zwalker_hs.jpg">
 		</div>
 		<div class="{{getCSSPrefix('about-info-container')}}">

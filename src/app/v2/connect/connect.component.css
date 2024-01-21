@@ -93,7 +93,7 @@
 }
 /*  end phone css */
 
-.connect-content-container {
+.connect-content-container, .tablet-connect-content-container {
 	z-index: 1;
 	flex-basis: 70%;
 	width: 95%;
@@ -103,7 +103,7 @@
 	justify-content: center;
 }
 
-.connect-form-container {
+.connect-form-container, .tablet-connect-form-container {
 	flex-basis: 40%;
 	position: relative;
 	background: #242424;
@@ -135,7 +135,7 @@
 	color: #f0eae5;
 }
 
-#contact-form {
+#contact-form, #tablet-contact-form {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -144,12 +144,12 @@
 	margin: 0 auto;
 }
 
-#contact-form textarea {
+#contact-form textarea, #tablet-contact-form textarea {
 	height: 200px;
 	resize: none;
 }
 
-#contact-form input, form textarea {
+#contact-form input, form textarea, #tablet-contact-form input {
 	width: 100%;
 	padding: 10px 0;
 	background: none;
@@ -195,7 +195,7 @@ ng-hcaptcha {
 	align-self: center;
 }
 
-.captcha-and-submit {
+.captcha-and-submit, .tablet-captcha-and-submit {
 	display: flex;
 	flex-direction: column;
 	flex-basis: 35%;
@@ -372,3 +372,15 @@ button {
 	margin: 0 auto;
 	transform: scale(0.9);
 }
+
+/* tablet css */
+.tablet-connect-form-container {
+	flex-basis: 75%;
+}
+
+.tablet-connect-content-container {
+	.social-icons {
+		flex-basis: 13%;
+	}
+}
+/* tablet end */
