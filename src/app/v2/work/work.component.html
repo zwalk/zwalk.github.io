@@ -1,17 +1,22 @@
 <app-nav></app-nav>
+<app-stars></app-stars>
 <app-border>
+	<div class="display-none" [@fall]="fall" (@fall.done)="shouldShowLandscapeMessage()"></div>
+	<div class="landscape-message" [@fadeIn]="showLandscapeMessage" [ngClass]="{'display-none': !showLandscapeMessage}">
+		<h1>Look what you did! Rotate me back to portrait!</h1>
+	</div>
 	<app-page-title
 	[title]="this.label"
 	[tiles]="this.tiles"
 	[smallLabels]="true"
 	[buttonText]="'Download Resume'"
 	[buttonFunction]="goToResume"></app-page-title>
-	<div class="{{getCSSPrefix('work-content')}}" *ngIf="!isPhone">
-		<app-work-tile *ngFor="let workTile of workTiles" [workTile]=workTile></app-work-tile>
+	<div [@fall]="fall" class="{{getCSSPrefix('work-content')}}" *ngIf="!isPhone">
+		<app-work-tile [@fall]="fall" *ngFor="let workTile of workTiles" [workTile]=workTile></app-work-tile>
 	</div>
 	<!-- for small screens -->
-	<div class="phone-work-content" *ngIf="isPhone">
-		<app-work-tile [workTile]="currentTile" (animationEvent)="updateAnimationState($event)"></app-work-tile>
+	<div [@fall]="fall" class="phone-work-content" *ngIf="isPhone">
+		<app-work-tile [@fall]="fall" [workTile]="currentTile" (animationEvent)="updateAnimationState($event)"></app-work-tile>
 		<div class="controls">
 			<div class="material-icons" (click)="setPause(true); fadeBack()">arrow_back_ios</div>
 			<div class="material-icons" *ngIf="paused" (click)="setPause(false)">play_circle</div>

@@ -1,11 +1,13 @@
 <app-nav></app-nav>
+<app-stars></app-stars>
 <app-border [spaceRule]="spaceRule">
 	<app-page-title
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
-	<div class="{{getCSSPrefix('education-container')}}"
+	<div [@fall]="fall" (@fall.done)="shouldShowLandscapeMessage()" class="{{getCSSPrefix('education-container')}}"
 		[ngClass]="{'scale': (shouldShow(tE) || shouldShow(oSU)) && isPhone, 'tablet-scale': (shouldShow(tE) || shouldShow(oSU)) && isTablet}">
 		<div #tE
+		[@fall]="fall"
 		[@showDetail]="shouldShow(tE)"
 		(@showDetail.start)="setShowDetailState('running')"
 		(@showDetail.done)="setShowDetailState('stable')"
@@ -60,6 +62,7 @@
 		</div>
 
 		<div #oSU
+		[@fall]="fall"
 		[@showDetail]="shouldShow(oSU)"
 		(@showDetail.start)="setShowDetailState('running')"
 		(@showDetail.done)="setWiden(true)"
@@ -110,8 +113,14 @@
 			</div>
 		</div>
 	</div>
-	<button (click)="flip()"
+	<button [@fall]="fall"
+	(click)="flip()"
 	class="{{getCSSPrefix('button')}}"
 	[@hide]="this.shownTile != undefined && (this.isPhone || this.isTablet)"
-	[ngClass]="{'hide': this.hideAnimationState == 'stable' && this.shownTile != undefined && (this.isPhone || this.isTablet)}">{{buttonText}}</button>
+	[ngClass]="{'hide': this.hideAnimationState == 'stable' && this.shownTile != undefined && (this.isPhone || this.isTablet)}">
+	{{buttonText}}</button>
+	
+	<div class="landscape-message" [@fadeIn]="showLandscapeMessage" [ngClass]="{'display-none': !showLandscapeMessage}">
+		<h1>Look what you did! Rotate me back to portrait!</h1>
+	</div>
 </app-border>

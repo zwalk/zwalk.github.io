@@ -1,9 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 import { Tiles } from '../constants/Tiles';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LeavingModalComponent } from '../leaving-modal/leaving-modal.component';
+import { fallAnimation } from '../animations';
 
 enum ModalLinks {
   osu = "https://fisher.osu.edu/",
@@ -29,6 +30,16 @@ enum ModalLinks {
       state("true", style({ opacity: 0})),
       state("false", style({ opacity: 1 })),
       transition("0 <=> 1", animate(100))
+    ]),
+    trigger("fall", [
+      state('true', style({ transform: 'translateY(100%)', display: 'none'})),
+      state('false', style({})),
+      transition("0 => 1", [useAnimation(fallAnimation)])]
+    ),
+    trigger("fadeIn", [
+      state('true', style({ opacity: 1})),
+      state('false', style({ opacity: 0})),
+      transition("0=>1", animate(2000))
     ])
   ]
 })
@@ -48,33 +59,49 @@ export class EducationComponent {
   widen : boolean = false;
   showDetail : boolean = false;
   link = 'pizza'
+  fall : boolean = false;
+  showLandscapeMessage : boolean = false;
+  isLandscape : boolean = false;
 
   constructor(private observer : BreakpointObserver, private dialog : MatDialog) {}
 
   ngOnInit() {
-    this.onResize();
-  }
-
-
-  @HostListener('window:resize,', ['$event'])
-  onResize() {
-    this.observer.observe(Breakpoints.HandsetPortrait)
+    this.observer.observe([
+      Breakpoints.HandsetPortrait,
+      Breakpoints.HandsetLandscape,
+      Breakpoints.TabletPortrait,
+      Breakpoints.TabletLandscape
+    ])
     .subscribe(result => {
-      if (result.matches) {
+      const breakpoints = result.breakpoints;
+      if (breakpoints[Breakpoints.HandsetPortrait]) {
         this.isPhone = true;
         this.isTablet = false;
-      } else {
-        this.isPhone = false;
-      }
-    })
-
-    this.observer.observe(Breakpoints.Tablet)
-    .subscribe(result => {
-      if (result.matches) {
+        this.fall = false;
+        this.showLandscapeMessage = false;
+        this.isLandscape = false;
+      } else if (breakpoints[Breakpoints.HandsetLandscape]) {
+        this.isPhone = true;
+        this.isTablet = false;
+        this.fall = true;
+        this.isLandscape = true;
+      } else if (breakpoints[Breakpoints.TabletPortrait]) {
         this.isPhone = false;
         this.isTablet = true;
-      } else {
+        this.fall = false;
+        this.showLandscapeMessage = false;
+        this.isLandscape = false;
+      } else if (breakpoints[Breakpoints.TabletLandscape]) {
+        this.isPhone = false;
         this.isTablet = false;
+        this.fall = true;
+        this.isLandscape = true;
+      } else {
+        this.isPhone = false;
+        this.isTablet = false;
+        this.fall = false;
+        this.showLandscapeMessage = false;
+        this.isLandscape = false;
       }
     })
   }
@@ -144,5 +171,11 @@ export class EducationComponent {
 
   shouldWiden(tile : HTMLDivElement) {
     return (this.isPhone || this.isTablet) && this.widen == true && this.shownTile == tile;
+  }
+
+  shouldShowLandscapeMessage() {
+    if  (this.isLandscape) {
+      this.showLandscapeMessage = true;
+    }
   }
 }

@@ -1,3 +1,7 @@
+h1, h2, h3 {
+    color: #fff;
+}
+
 /* phone css */
 #phone-content-image {
     border-radius: 20px;
@@ -83,4 +87,11 @@ app-tile {
 
 h1 {
     text-align: center;
+}
+
+.landscape-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 }

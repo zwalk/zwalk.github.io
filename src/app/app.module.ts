@@ -24,6 +24,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { LeavingModalComponent } from './v2/leaving-modal/leaving-modal.component';
 import { MatButtonModule } from '@angular/material/button'
+import { StarsComponent } from './v2/stars/stars.component';
 
 
 
@@ -43,7 +44,8 @@ import { MatButtonModule } from '@angular/material/button'
     AboutComponent,
     PageTitleComponent,
     ConnectComponent,
-    LeavingModalComponent
+    LeavingModalComponent,
+    StarsComponent
   ],
   imports: [
     BrowserModule,

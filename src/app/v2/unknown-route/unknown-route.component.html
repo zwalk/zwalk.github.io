@@ -1,11 +1,15 @@
 <app-nav></app-nav>
+<app-stars></app-stars>
 <app-border>
-    <div class="content">
-        <h1>ERROR: 404</h1>
-        <h2 class="{{getCSSPrefix('subtitle')}}">This is not the page you are looking for...</h2>
-        <img id="{{getCSSPrefix('content-image')}}" src="assets/v2/img/404.jpg"/>
-        <h3 class="{{getCSSPrefix('message')}}">You have arrived at a page that no longer exists, never existed, or doesn't exist yet.</h3>
-        <div class="{{getCSSPrefix('tile-container')}}">
+    <div class="landscape-message" [@fadeIn]="showLandscapeMessage" [ngClass]="{'display-none': !showLandscapeMessage}">
+		<h1>Look what you did! Rotate me back to portrait!</h1>
+	</div>
+    <div [@fall]="fall" (@fall.done)="shouldShowLandscapeMessage()" class="content">
+        <h1 [@fall]="fall">ERROR: 404</h1>
+        <h2 [@fall]="fall" class="{{getCSSPrefix('subtitle')}}">This is not the page you are looking for...</h2>
+        <img [@fall]="fall" id="{{getCSSPrefix('content-image')}}" src="assets/v2/img/404.jpg"/>
+        <h3 [@fall]="fall" class="{{getCSSPrefix('message')}}">You have arrived at a page that no longer exists, never existed, or doesn't exist yet.</h3>
+        <div [@fall]="fall" class="{{getCSSPrefix('tile-container')}}">
             <app-tile *ngFor="let tile of tiles" [tile]=tile>
             </app-tile>
         </div>

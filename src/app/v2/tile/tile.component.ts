@@ -1,5 +1,7 @@
 import { Component, ElementRef, HostListener, Input, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
+import { fallAnimation } from '../animations';
 
 declare global {
   class Tile {
@@ -14,7 +16,19 @@ declare global {
 @Component({
   selector: 'app-tile',
   templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.css']
+  styleUrls: ['./tile.component.css'],
+  animations: [
+    trigger("fall", [
+      state('true', style({ transform: 'translateY(10000%)'})),
+      state('false', style({})),
+      transition("0 => 1", [useAnimation(fallAnimation)])]
+    ),
+    trigger("fadeIn", [
+      state('true', style({ opacity: 1})),
+      state('false', style({ opacity: 0})),
+      transition("0=>1", animate(2000))
+    ])
+  ]
 })
 export class TileComponent {
   startTime: number = 0;
@@ -31,40 +45,53 @@ export class TileComponent {
   video: HTMLVideoElement | undefined;
   isPhone : boolean = false;
   isTablet : boolean = false;
+  isPhoneLandscape : boolean = false;
+  fall : boolean = false;
   
   @Input() smallLabels : boolean = true;
 
   constructor(private observer : BreakpointObserver) {}
 
   ngOnInit() {
-   this.onResize();
+    this.observer.observe([
+      Breakpoints.HandsetPortrait,
+      Breakpoints.HandsetLandscape,
+      Breakpoints.TabletPortrait,
+      Breakpoints.TabletLandscape
+    ])
+    .subscribe(result => {
+      const breakpoints = result.breakpoints;
+      if (breakpoints[Breakpoints.HandsetPortrait]) {
+        this.isPhone = true;
+        this.isPhoneLandscape = false;
+        this.isTablet = false;
+        this.fall = false;
+      } else if (breakpoints[Breakpoints.HandsetLandscape]) {
+        this.isPhoneLandscape = true;
+        this.isPhone = false;
+        this.isTablet = false;
+        this.fall = true;
+      } else if (breakpoints[Breakpoints.TabletPortrait]) {
+        this.isPhone = false;
+        this.isPhoneLandscape = false;
+        this.isTablet = true;
+        this.fall = false;
+      } else if (breakpoints[Breakpoints.TabletLandscape]) {
+        this.isPhone = false;
+        this.isPhoneLandscape = true;
+        this.isTablet = false;
+        this.fall = true;
+      } else {
+        this.isPhone = false;
+        this.isPhoneLandscape = false;
+        this.isTablet = false;
+        this.fall = false;
+      }
+    })
   }
 
   ngAfterViewInit() {
     this.video = this.videoRef?.nativeElement;
-  }
-
-  @HostListener('window:resize,', ['$event'])
-  onResize() {
-    this.observer.observe(Breakpoints.HandsetPortrait)
-    .subscribe(result => {
-      if (result.matches) {
-        this.isPhone = true;
-        this.isTablet = false;
-      } else {
-        this.isPhone = false;
-      }
-    })
-
-    this.observer.observe(Breakpoints.Tablet)
-    .subscribe(result => {
-      if (result.matches) {
-        this.isPhone = false;
-        this.isTablet = true;
-      } else {
-        this.isTablet = false;
-      }
-    })
   }
 
   playVideo() {

@@ -2,12 +2,26 @@ import { Component, ElementRef, HostListener } from '@angular/core';
 import { Tiles } from '../constants/Tiles';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { interval, Subscription } from 'rxjs';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
+import { fallAnimation } from '../animations';
 
 
 @Component({
   selector: 'app-work',
   templateUrl: './work.component.html',
-  styleUrls: ['./work.component.css']
+  styleUrls: ['./work.component.css'],
+  animations: [
+    trigger("fall", [
+      state('true', style({ transform: 'translateY(10000%)', display: 'none'})),
+      state('false', style({})),
+      transition("0 => 1", [useAnimation(fallAnimation)])]
+    ),
+    trigger("fadeIn", [
+      state('true', style({ opacity: 1})),
+      state('false', style({ opacity: 0})),
+      transition("0=>1", animate(2000))
+    ])
+  ]
 })
 export class WorkComponent {
   label = "Work";
@@ -47,7 +61,10 @@ export class WorkComponent {
     }
   ]
   isPhone : boolean = false;
+  isPhoneLandscape : boolean = false;
   isTablet : boolean = false;
+  fall : boolean = false;
+  showLandscapeMessage : boolean = false;
   currentIndex = 0;
   currentTile : WorkTile | undefined = this.workTiles[this.currentIndex];
   source = interval(5000);
@@ -84,42 +101,61 @@ export class WorkComponent {
   }
   
   ngOnInit() {
-    this.onResize();
+    this.observer.observe([
+      Breakpoints.HandsetPortrait,
+      Breakpoints.HandsetLandscape,
+      Breakpoints.TabletPortrait,
+      Breakpoints.TabletLandscape
+    ])
+    .subscribe(result => {
+      const breakpoints = result.breakpoints;
+
+      if (!breakpoints[Breakpoints.TabletPortrait] && this.workTiles[0].id == 3) {
+        this.workTiles = this.workTiles.reverse();
+      }
+
+      if (breakpoints[Breakpoints.HandsetPortrait]) {
+        if (this.subscription == undefined) {
+          this.subscription = this.source.subscribe(() => this.fade(false) )
+        }
+        if (this.currentTile == undefined) {
+          this.currentTile = this.workTiles[0];
+        }
+        this.isPhone = true;
+        this.isPhoneLandscape = false;
+        this.isTablet = false;
+        this.fall = false;
+        this.showLandscapeMessage = false;
+      } else if (breakpoints[Breakpoints.HandsetLandscape]) {
+        this.isPhone = true;
+        this.isPhoneLandscape = true;
+        this.isTablet = false;
+        this.fall = true;
+      } else if (breakpoints[Breakpoints.TabletPortrait]) {
+        this.isPhone = false;
+        this.isPhoneLandscape = false;
+        this.isTablet = true;
+        this.fall = false;
+        this.showLandscapeMessage = false;
+        if(this.workTiles[0].id == 1) this.workTiles = this.workTiles.reverse();
+      } else if (breakpoints[Breakpoints.TabletLandscape]) {
+        this.isPhone = false;
+        this.isPhoneLandscape = false;
+        this.isTablet = true;
+        this.fall = true;
+        this.showLandscapeMessage = true;
+      } else {
+        this.isPhone = false;
+        this.isPhoneLandscape = false;
+        this.isTablet = false;
+        this.fall = false;
+        this.showLandscapeMessage = false;
+      }
+    })
   }
 
   ngOnDestroy() {
     if (this.subscription) this.subscription.unsubscribe();
-  }
-
-  @HostListener('window:resize,', ['$event'])
-  onResize() {
-    this.observer.observe(Breakpoints.HandsetPortrait)
-    .subscribe(result => {
-      if (result.matches) {
-        this.isPhone = true;
-        this.isTablet = false;
-      } else {
-        this.isPhone = false;
-      }
-    })
-
-    this.observer.observe(Breakpoints.Tablet)
-    .subscribe(result => {
-      if (result.matches) {
-        this.isPhone = false;
-        this.isTablet = true;
-      } else {
-        this.isTablet = false;
-      }
-    })
-
-    if (this.isPhone) {
-      this.subscription = this.source.subscribe(() => this.fade(false) )
-    }
-
-    if (this.isTablet) {
-      this.workTiles = this.workTiles.reverse();
-    }
   }
 
   isCurrentTile(tile : WorkTile) {
@@ -188,5 +224,11 @@ export class WorkComponent {
 
    goToResume = () => {
     window.location.href = 'assets/v2/files/ZachWalker_resume.pdf';
+  }
+
+  shouldShowLandscapeMessage() {
+    if  (this.isPhoneLandscape) {
+      this.showLandscapeMessage = true;
+    }
   }
 }

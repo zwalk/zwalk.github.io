@@ -1,8 +1,9 @@
 import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger, useAnimation } from '@angular/animations';
 import { MatDialog, MatDialogRef, MatDialogState } from '@angular/material/dialog';
 import { LeavingModalComponent } from '../leaving-modal/leaving-modal.component';
+import { fallAnimation } from '../animations';
 
 enum WorkModalLinks {
   "https://www.covermymeds.com/main/about",
@@ -49,6 +50,7 @@ export class WorkTileComponent {
   };
   shouldShowOverlay : boolean = false;
   isPhone : boolean = false;
+  fall : boolean = false;
   @Output() animationEvent = new EventEmitter<string>();
   dialogRef : MatDialogRef<LeavingModalComponent> | undefined;
 
@@ -59,15 +61,22 @@ export class WorkTileComponent {
   constructor(private observer : BreakpointObserver, private dialog : MatDialog) {}
   
   ngOnInit() {
-    this.onResize();
-  }
-
-  @HostListener('window:resize,', ['$event'])
-  onResize() {
-    this.observer.observe(Breakpoints.HandsetPortrait)
+    this.observer.observe([
+      Breakpoints.HandsetPortrait,
+      Breakpoints.HandsetLandscape,
+      Breakpoints.TabletPortrait,
+      Breakpoints.TabletLandscape
+    ])
     .subscribe(result => {
-      if (result.matches) {
+      const breakpoints = result.breakpoints;
+      if (breakpoints[Breakpoints.HandsetPortrait]) {
         this.isPhone = true;
+      } else if (breakpoints[Breakpoints.HandsetLandscape]) {
+        this.isPhone = true;
+      } else if (breakpoints[Breakpoints.TabletPortrait]) {
+        this.isPhone = false;
+      } else if (breakpoints[Breakpoints.TabletLandscape]) {
+        this.isPhone = false;
       } else {
         this.isPhone = false;
       }
@@ -75,7 +84,6 @@ export class WorkTileComponent {
   }
 
   openModal(link : string) {
-    console.log(this.dialogRef?.getState());
     if (this.dialogRef?.getState() == MatDialogState.OPEN) return;
     if (Object.values(WorkModalLinks).includes(link)) {
       this.dialogRef = this.dialog.open(LeavingModalComponent, {

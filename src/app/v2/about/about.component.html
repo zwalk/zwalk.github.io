@@ -1,9 +1,14 @@
 <app-nav></app-nav>
+<app-stars></app-stars>
 <app-border>
 	<app-page-title
+	[@fall]="fall"
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
-	<div class="{{getCSSPrefix('about-container')}}">
+	<div class="landscape-message" [@fadeIn]="showLandscapeMessage" [ngClass]="{'display-none': !showLandscapeMessage}">
+		<h1>Look what you did! Rotate me back to portrait!</h1>
+	</div>
+	<div [@fall]="fall" (@fall.done)="shouldShowLandscapeMessage()" class="{{getCSSPrefix('about-container')}}">
 		<div class="about-img-container" *ngIf="!isPhone && !isTablet">
 			<img src="assets/v2/img/zwalker_hs.jpg">
 		</div>

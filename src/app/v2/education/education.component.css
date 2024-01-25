@@ -484,3 +484,11 @@ button:focus {
 	pointer-events: none !important;
 	transform: rotateY(180deg) !important;
 }
+
+.landscape-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: #fff;
+}

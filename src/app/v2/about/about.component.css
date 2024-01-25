@@ -1,3 +1,7 @@
+p, h2, h3, h4 {
+	color: #fff;
+}
+
 /* phone css */
 .phone-about-info-container {
 	display: flex;
@@ -22,7 +26,7 @@
 				inset: calc(-1*var(--b));
 				border: inherit;
 				border-radius: var(--r);
-				background: linear-gradient(rgba(100, 43, 115, 1), rgba(4, 0, 4, 1)) border-box;
+				background: linear-gradient(rgba(100, 43, 115, 1), #166bce) border-box;
 				--corner:
 					conic-gradient(from -90deg at var(--c) var(--c), red 25%, #0000 0) 0 0/ calc(100% - var(--c)) calc(100% - var(--c)) border-box;
 				--inner: conic-gradient(red 0 0) padding-box;
@@ -100,7 +104,7 @@
 				inset: calc(-1*var(--b));
 				border: inherit;
 				border-radius: var(--r);
-				background: linear-gradient(rgba(100, 43, 115, 1), rgba(4, 0, 4, 1)) border-box;
+				background: linear-gradient(rgba(100, 43, 115, 1), #166bce) border-box;
 				--corner:
 					conic-gradient(from -90deg at var(--c) var(--c), red 25%, #0000 0) 0 0/ calc(100% - var(--c)) calc(100% - var(--c)) border-box;
 				--inner: conic-gradient(red 0 0) padding-box;
@@ -208,7 +212,7 @@ app-page-title {
 				inset: calc(-1*var(--b));
 				border: inherit;
 				border-radius: var(--r);
-				background: linear-gradient(rgba(100, 43, 115, 1), rgba(4, 0, 4, 1)) border-box;
+				background: linear-gradient(rgba(100, 43, 115, 1), #166bce) border-box;
 				--corner:
 					conic-gradient(from -90deg at var(--c) var(--c), red 25%, #0000 0) 0 0/ calc(100% - var(--c)) calc(100% - var(--c)) border-box;
 				--inner: conic-gradient(red 0 0) padding-box;
@@ -262,4 +266,12 @@ app-page-title {
 	flex-direction: column;
 	justify-content: space-between;
 	flex-basis: 26%;
+}
+
+.landscape-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: #fff;
 }

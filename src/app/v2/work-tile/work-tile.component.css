@@ -12,6 +12,7 @@
 	border-radius: 5%;
 	overflow: hidden;
 	margin: 0 auto;
+	border: 1px solid #ffffff4d;
 }
 
 .phone-work-logo-container {
@@ -37,6 +38,7 @@ img {
 }
 
 .work-tile {
+	border: 1px solid #ffffff4d;
 	flex-basis: 28%;
 	height: 100%;
 	cursor: pointer;

@@ -1,19 +1,24 @@
 <app-nav></app-nav>
+<app-stars></app-stars>
 <app-border>
+	<div class="landscape-message" [@fadeIn]="showLandscapeMessage" [ngClass]="{'display-none': !showLandscapeMessage}">
+		<h1>Look what you did! Rotate me back to portrait!</h1>
+	</div>
 	<app-page-title
+	[@fall]="fall"
 	[title]="this.label"
 	[tiles]="this.tiles"></app-page-title>
 
-	<div class="{{getCSSPrefix('connect-content-container')}}">
+	<div [@fall]="fall" class="{{getCSSPrefix('connect-content-container')}}">
 		<div class="phone-social-icons" *ngIf="isPhone">
-			<div (click)= "openModal('https://www.linkedin.com/in/zswalker/')">
+			<div [@fall]="fall" (click)= "openModal('https://www.linkedin.com/in/zswalker/')">
 				<img src="assets/v2/img/linkedin_icon.png" alt="icon to Zach's LinkedIn">
 			</div>
-			<div #github (click)="openModal('https://github.com/zwalk')">
+			<div [@fall]="fall" (click)="openModal('https://github.com/zwalk')">
 				<img src="assets/v2/img/github_icon.png" alt="icon to Zach's Github account">
 			</div>
 		</div>
-		<div [@shake]="shake ? 'true' : 'false'" (@shake.done)="shake = false" class="{{getCSSPrefix('connect-form-container')}}">
+		<div [@fall]="fall" (@fall.done)="shouldShowLandscapeMessage()" [@shake]="shake ? 'true' : 'false'" (@shake.done)="shake = false" class="{{getCSSPrefix('connect-form-container')}}">
 			<div class="form-header">
 				Email Me
 			</div>
@@ -59,10 +64,10 @@
 			</form>
 		</div>
 		<div class="social-icons" *ngIf="!isPhone">
-			<div #linkedin (click)= "openModal('https://www.linkedin.com/in/zswalker/')" (mouseenter)="spin(linkedin)" (mouseleave)="backToStart(linkedin)">
+			<div [@fall]="fall" #linkedin (click)= "openModal('https://www.linkedin.com/in/zswalker/')" (mouseenter)="spin(linkedin)" (mouseleave)="backToStart(linkedin)">
 				<img src="assets/v2/img/linkedin_icon.png" alt="icon to Zach's LinkedIn">
 			</div>
-			<div #github (click)="openModal('https://github.com/zwalk')" (mouseenter)="spin(github)" (mouseleave)="backToStart(github)">
+			<div [@fall]="fall" #github (click)="openModal('https://github.com/zwalk')" (mouseenter)="spin(github)" (mouseleave)="backToStart(github)">
 				<img src="assets/v2/img/github_icon.png" alt="icon to Zach's Github account">
 			</div>
 		</div>

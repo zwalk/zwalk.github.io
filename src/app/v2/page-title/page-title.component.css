@@ -1,3 +1,7 @@
+.page-title, .phone-page-title, .tablet-page-title {
+	color: #fff;
+}
+
 /* phone rules */
 .phone-title-and-tile-container {
 	display: flex;

@@ -18,7 +18,7 @@ export class NavComponent {
     this.onResize();
   }
 
-  @HostListener('window:resize,', ['$event'])
+  @HostListener('window:resize', ['$event'])
   onResize() {
     this.observer.observe(Breakpoints.HandsetPortrait)
     .subscribe(result => {

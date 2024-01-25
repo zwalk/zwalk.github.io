@@ -1,4 +1,5 @@
-<div class="{{getCSSPrefix('tile')}}" 
+<div [@fall]="fall"
+class="{{getCSSPrefix('tile')}}" 
 (mouseenter)="playVideo()"
 (mouseleave)="resetVideo()"
 routerLink="{{tile.pageUrl}}">

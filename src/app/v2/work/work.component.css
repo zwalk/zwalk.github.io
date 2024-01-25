@@ -28,6 +28,7 @@
 		justify-content: space-evenly;
 		width: 75%;
 		align-self: center;
+		margin-top: 3%;
 	}
 
 	.controls button {
@@ -63,7 +64,7 @@
 		display: inline-block;
 		width: .7rem;
 		height: .7rem;
-		background-color: #333;
+		background-color: #6e6e6e;
 		background-clip: content-box;
 		border: 0.25rem solid transparent;
 		border-radius: 50%;
@@ -72,7 +73,7 @@
 	}
 
 	.active-bubble {
-		background-color: #008296;
+		background-color: #0198b0;
 	}
 
 /* end Phone */
@@ -143,4 +144,16 @@ app-border .border {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+}
+
+.landscape-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	color: #fff;
+}
+
+.material-icons {
+	color: #fff;
 }

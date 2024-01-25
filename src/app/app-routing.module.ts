@@ -8,6 +8,7 @@ import { EducationComponent } from './v2/education/education.component';
 import { UnknownRouteComponent } from './v2/unknown-route/unknown-route.component';
 import { AboutComponent } from './v2/about/about.component';
 import { ConnectComponent } from './v2/connect/connect.component';
+import { StarsComponent } from './v2/stars/stars.component';
 
 const routerOptions: ExtraOptions = {
   scrollPositionRestoration: "enabled",
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'v2/education', component: EducationComponent},
   { path: 'v2/about', component: AboutComponent},
   { path: 'v2/connect', component: ConnectComponent},
+  { path: 'v2/stars', component: StarsComponent},
   { path: '**', component: UnknownRouteComponent }
 ];
 

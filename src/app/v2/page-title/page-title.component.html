@@ -1,9 +1,9 @@
 <div class="{{getCSSPrefix('title-and-tile-container')}}">
-	<div class="{{getCSSPrefix('page-title-container')}}">
+	<div [@fall]="fall" class="{{getCSSPrefix('page-title-container')}}">
 		<h1 class="{{getCSSPrefix('page-title')}}">{{title}}</h1>
 		<button *ngIf="hasButton" (click)="buttonFunction()">{{buttonText}}</button>
 	</div>
-	<div class="tile-container">
+	<div [@fall]="fall" class="tile-container">
 		<app-tile *ngFor="let tile of tiles" [tile]=tile>
 		</app-tile>
 	</div>
