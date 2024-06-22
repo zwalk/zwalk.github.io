@@ -2,7 +2,13 @@
 	<div class="{{getCSSPrefix('logo')}}" routerLink="/v2/home">
 		<img class="{{getCSSPrefix('')}}" src="assets/v2/img/zw_logo.png">
 	</div>
-	<button routerLink='/v1' outerLinkActive='active' ariaCurrentWhenActive="page">
-		Go to 2019 Version
-	</button>
+	<div id="button-container">
+		<div class="slider-container">
+			<p class="small" (click)="handleLabelClick('background')">Background Motion</p>
+			<mat-slide-toggle [ngModel]="stopMotionChecked" [checked]="stopMotionChecked" color="primary" (change)="stopOrStart()"></mat-slide-toggle>
+		</div>
+		<button routerLink='/v1' outerLinkActive='active' ariaCurrentWhenActive="page">
+			Go to 2019 Version
+		</button>
+	</div>
 </div>

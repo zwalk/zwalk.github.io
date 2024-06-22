@@ -26,8 +26,9 @@
 	overflow: hidden;
 	position: relative;
 	text-align: center;
-	border-radius: 15%;
+	border-radius: 15px;
 	cursor: pointer;
+	border: 1px solid #ffffff4d;
 }
 /* end phone */
 
@@ -37,8 +38,8 @@
 	overflow: hidden;
 	position: relative;
 	text-align: center;
-	border-radius: 15%;
-	filter: drop-shadow(10px 10px 5px #ffffff26);
+	border-radius: 15px;
+	border: 1px solid #ffffff4d;
 	cursor: pointer;
 }
 

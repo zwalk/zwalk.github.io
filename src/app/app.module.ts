@@ -25,6 +25,8 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule } from 'ng
 import { LeavingModalComponent } from './v2/leaving-modal/leaving-modal.component';
 import { MatButtonModule } from '@angular/material/button'
 import { StarsComponent } from './v2/stars/stars.component';
+import { MotionService } from './motion.service';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 
@@ -59,9 +61,11 @@ import { StarsComponent } from './v2/stars/stars.component';
     LayoutModule,
     MatIconModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule
   ],
   providers: [
+    MotionService,
     provideHttpClient(),
     provideAnimations(),
     { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LcPYEcpAAAAAKGbAwbbbd_SvY65srwzeXUP7cdn' },

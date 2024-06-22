@@ -148,3 +148,24 @@ h4 {
 	z-index: 1;
 	margin-top: 1%;
 }
+
+.small {
+	font-size: small;
+}
+
+#button-container {
+	display: flex;
+	flex-basis: 28%;
+	justify-content: flex-end;
+}
+
+.slider-container {
+	display: flex;
+	justify-content: space-around;
+	flex-basis: 40%;
+}
+
+.slider-container p {
+	align-self: center;
+	cursor: pointer;
+}

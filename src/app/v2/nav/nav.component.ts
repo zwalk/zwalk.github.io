@@ -1,5 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
+import { MotionService } from 'src/app/motion.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,11 +13,24 @@ export class NavComponent {
   isPhoneLandscape : boolean = false;
   isTablet : boolean = false;
   isTabletLandscape : boolean = false;
+  stopMotionChecked = true;
 
-  constructor(private observer : BreakpointObserver) {}
+
+  constructor(private observer : BreakpointObserver, private motionService : MotionService) {}
   
   ngOnInit() {
     this.onResize();
+  }
+
+  stopOrStart() {
+    this.motionService.switchMotion();
+  }
+
+  handleLabelClick(type : string) {
+    if (type == 'background') {
+      this.stopMotionChecked = !this.stopMotionChecked;
+      this.stopOrStart();
+    }
   }
 
   @HostListener('window:resize', ['$event'])

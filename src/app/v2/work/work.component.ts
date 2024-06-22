@@ -223,7 +223,7 @@ export class WorkComponent {
   }
 
    goToResume = () => {
-    window.location.href = 'assets/v2/files/ZachWalker_resume.pdf';
+    window.location.href = 'assets/v2/files/zachwalker_resume.pdf';
   }
 
   shouldShowLandscapeMessage() {
