@@ -3,6 +3,7 @@ import { Tiles } from '../constants/Tiles'
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { animate, keyframes, state, style, transition, trigger, useAnimation } from '@angular/animations';
 import { fallAnimation } from '../animations';
+import { BackgroundService } from 'src/app/background.service';
 
 @Component({
   selector: 'app-home',
@@ -31,9 +32,33 @@ export class HomeComponent {
   fall : boolean = false;
   showLandscapeMessage : boolean = false;
 
-  constructor(private observer : BreakpointObserver) {}
+
+  constructor(private observer : BreakpointObserver
+  ) {}
 
   ngOnInit() {
+   this.handleScaling();
+  }
+
+  getCSSPrefix(name : string) {
+    let prefix : string = '';
+    if (this.isPhone) {
+      prefix = 'phone-';
+    } else if (this.isTablet) {
+      prefix = 'tablet-';
+    } else {
+      prefix = '';
+    }
+    return prefix + name;
+  }
+
+  shouldShowLandscapeMessage() {
+    if  (this.isPhoneLandscape) {
+      this.showLandscapeMessage = true;
+    }
+  }
+
+  handleScaling() {
     this.observer.observe([
       Breakpoints.HandsetPortrait,
       Breakpoints.HandsetLandscape,
@@ -72,23 +97,16 @@ export class HomeComponent {
         this.showLandscapeMessage = false;
       }
     })
-  }
 
-  getCSSPrefix(name : string) {
-    let prefix : string = '';
-    if (this.isPhone) {
-      prefix = 'phone-';
-    } else if (this.isTablet) {
-      prefix = 'tablet-';
-    } else {
-      prefix = '';
-    }
-    return prefix + name;
-  }
-
-  shouldShowLandscapeMessage() {
-    if  (this.isPhoneLandscape) {
-      this.showLandscapeMessage = true;
-    }
+    // ipad pro
+    this.observer.observe('(min-width:768px) and (max-width: 1024px)')
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
+      }
+    })
   }
 }

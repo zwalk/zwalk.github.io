@@ -133,8 +133,10 @@ export class StarsComponent {
 
 
   ngOnInit() {
-    this.subscribeAll();
     this.getWindowSize(false);
+    if (this.motionService.stopMotion == false) {
+      this.subscribeAll();
+    }
     this.motionService.stopOrStart$.subscribe(stopMotion => {
       if (stopMotion) {
         this.unsubscribeAll();

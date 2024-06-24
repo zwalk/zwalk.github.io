@@ -1,5 +1,6 @@
 import { Component, HostListener, Input } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BackgroundService } from 'src/app/background.service';
 
 @Component({
   selector: 'app-border',
@@ -10,11 +11,33 @@ export class BorderComponent {
   isPhone : boolean = false;
   isTablet : boolean = false;
   @Input() spaceRule : string = '';
+  color = this.determineDefault();
 
-  constructor(private observer : BreakpointObserver) {}
+
+  constructor(private observer : BreakpointObserver,
+    private backgroundService : BackgroundService
+  ) {}
 
   ngOnInit() {
     this.onResize();
+    this.backgroundService.background$.subscribe(background => {
+      if (background == 'stars') {
+        this.color = 'white';
+      } else if (background == 'clouds') {
+        this.color = 'black';
+      }
+    })
+  }
+
+  determineDefault() {
+    const background = this.backgroundService.background.toString();
+    if(background === 'stars') {
+      return 'white';
+    } else if (background === 'clouds') {
+      return 'black';
+    } else {
+      return 'black';
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -38,6 +61,17 @@ export class BorderComponent {
     })
 
     this.observer.observe(Breakpoints.TabletPortrait)
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
+      }
+    })
+
+    // ipad pro
+    this.observer.observe('(min-width:768px) and (max-width: 1024px)')
     .subscribe(result => {
       if (result.matches) {
         this.isPhone = false;

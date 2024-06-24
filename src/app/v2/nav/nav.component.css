@@ -20,6 +20,51 @@
 	justify-content: space-between;
 	height: 4%;
 }
+
+.phone-button-menu {
+	position: absolute;
+	z-index: 10;
+	display: flex;
+	width: 100%;
+	background-color: #ffffff6e;
+}
+
+#phone-button-container {
+	display: flex;
+	justify-content: space-evenly;
+	margin-right: 1%;
+	flex-basis: 100%;
+}
+
+.phone-background-selector-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-basis: 100%;
+}
+
+.phone-button-group {
+	height: 80%;
+}
+
+.phone-button-toggle {
+	display: flex;
+	align-items: center;
+	font-size: x-small;
+}
+
+.phone-version-link {
+	height: 100%;
+	padding: 3px;
+	border: solid 1.5px #FFF;
+	font-size: x-small;
+}
+
+#phone-version-container {
+	display: flex;
+	align-items: center;
+	height: 80%;
+}
 /* end phone */
 
 /* phone landscape */
@@ -44,6 +89,10 @@
 	justify-content: space-between;
 	height: 6%;
 }
+
+.menu-button {
+	border-radius: 1px;
+}
 /* end phone landscape */
 
 /* tablet */
@@ -67,6 +116,20 @@
 	display: flex;
 	justify-content: space-between;
 	height: 4%;
+}
+
+#tablet-button-container {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 1%;
+	flex-basis: 70%;
+}
+
+.tablet-background-selector-container {
+	display: flex;
+	align-items: center;
+	flex-basis: 100%;
+	justify-content: space-around;
 }
 /* end tablet */
 
@@ -112,11 +175,6 @@ button {
 	color: #f0eae5;
 }
 
-button:hover {
-	background-color: #f0eae5;
-	color: #242424;
-}
-
 #nav {
 	font-size: x-large;
 	font-family: 'IBM Plex Mono', monospace;
@@ -155,17 +213,37 @@ h4 {
 
 #button-container {
 	display: flex;
-	flex-basis: 28%;
 	justify-content: flex-end;
+	margin-right: 1%;
+	flex-basis: 50%;
+	max-width: 900px;
 }
 
-.slider-container {
+.background-selector-container {
 	display: flex;
+	align-items: center;
+	flex-basis: 60%;
 	justify-content: space-around;
-	flex-basis: 40%;
 }
 
-.slider-container p {
-	align-self: center;
-	cursor: pointer;
+.button-group {
+	height: 80%;
+}
+
+.button-toggle {
+	display: flex;
+	align-items: center;
+	font-size: small;
+}
+
+.version-link {
+	height: 100%;
+	padding: 7px;
+	border: solid 1.5px #FFF;
+}
+
+#version-container {
+	display: flex;
+	align-items: center;
+	height: 80%;
 }

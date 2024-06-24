@@ -27,6 +27,9 @@ import { MatButtonModule } from '@angular/material/button'
 import { StarsComponent } from './v2/stars/stars.component';
 import { MotionService } from './motion.service';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, MatButtonToggleModule} from '@angular/material/button-toggle';
+import { BackgroundService } from './background.service';
+import { CloudsComponent } from './v2/clouds/clouds.component';
 
 
 
@@ -47,7 +50,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     PageTitleComponent,
     ConnectComponent,
     LeavingModalComponent,
-    StarsComponent
+    StarsComponent,
+    CloudsComponent
   ],
   imports: [
     BrowserModule,
@@ -62,14 +66,17 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatIconModule,
     MatDialogModule,
     MatButtonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatButtonToggleModule
   ],
   providers: [
+    BackgroundService,
     MotionService,
     provideHttpClient(),
     provideAnimations(),
     { provide: RECAPTCHA_V3_SITE_KEY, useValue: '6LcPYEcpAAAAAKGbAwbbbd_SvY65srwzeXUP7cdn' },
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true, direction: 'ltr'}},
+    {provide: MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS, useValue: { hasSingleSectionIndicator: true }}
   ],
   bootstrap: [AppComponent]
 })

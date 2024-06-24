@@ -2,13 +2,64 @@
 	<div class="{{getCSSPrefix('logo')}}" routerLink="/v2/home">
 		<img class="{{getCSSPrefix('')}}" src="assets/v2/img/zw_logo.png">
 	</div>
-	<div id="button-container">
-		<div class="slider-container">
-			<p class="small" (click)="handleLabelClick('background')">Background Motion</p>
-			<mat-slide-toggle [ngModel]="stopMotionChecked" [checked]="stopMotionChecked" color="primary" (change)="stopOrStart()"></mat-slide-toggle>
+	<div *ngIf="!isPhone" id="{{getCSSPrefix('button-container')}}">
+		<div class="{{getCSSPrefix('background-selector-container')}}">
+			<mat-button-toggle-group 
+			class="button-group"
+			appearance="standard" 
+			(change)="chooseBackground($event.value)"
+			[value]="valueForToggles()"
+			[hideSingleSelectionIndicator]="false">
+				<mat-button-toggle class ="button-toggle" id="star-toggle" style="background-color:#1B2735; color: white; font-family: 'IBM Plex Mono', monospace;" value="stars">Night</mat-button-toggle>
+				<mat-button-toggle class ="button-toggle" style="background-color:rgba(0,180,255,1); font-family: 'IBM Plex Mono', monospace;" value="clouds">Day</mat-button-toggle>
+			  </mat-button-toggle-group>
+			  <mat-button-toggle-group
+			  class="button-group"
+			  appearance="standard"
+			  (change)="stopOrStart($event.value)"
+			  [value]="stopMotionValue()"
+			  multiple>
+				  <mat-button-toggle class ="button-toggle" value="run" style="background-color: #3d3c3c; color:#FFF; font-family: 'IBM Plex Mono', monospace;">Background Motion</mat-button-toggle>
+			  </mat-button-toggle-group>
+			  <div id="version-container">
+				<a class="version-link" mat-flat-button style="background-color: lightgray" routerLink='/v1' outerLinkActive='active' ariaCurrentWhenActive="page">
+					Go to 2019 Version
+				</a>
+			  </div>
 		</div>
-		<button routerLink='/v1' outerLinkActive='active' ariaCurrentWhenActive="page">
-			Go to 2019 Version
-		</button>
+	</div>
+	<button (click)="isMenuOpen = true" *ngIf="isPhone && !isMenuOpen" class="menu-button" mat-fab-extended>
+		<mat-icon>settings</mat-icon>
+	</button>
+	<button (click)="isMenuOpen = false" *ngIf="isPhone && isMenuOpen" class="menu-button" mat-fab-extended>
+		<mat-icon>close</mat-icon>
+	</button>
+</div>
+<div>
+	<div *ngIf="isPhone && isMenuOpen" class="phone-button-menu" id="phone-button-container">
+		<div class="phone-background-selector-container">
+			<mat-button-toggle-group 
+			class="phone-button-group"
+			appearance="standard" 
+			(change)="chooseBackground($event.value)"
+			[value]="valueForToggles()"
+			[hideSingleSelectionIndicator]="false">
+				<mat-button-toggle class ="phone-button-toggle" id="star-toggle" style="background-color:#1B2735; color: white; font-family: 'IBM Plex Mono', monospace;" value="stars">Night</mat-button-toggle>
+				<mat-button-toggle class ="phone-button-toggle" style="background-color:rgba(0,180,255,1); font-family: 'IBM Plex Mono', monospace;" value="clouds">Day</mat-button-toggle>
+			  </mat-button-toggle-group>
+			  <mat-button-toggle-group
+			  class="phone-button-group"
+			  appearance="standard"
+			  (change)="stopOrStart($event.value)"
+			  [value]="stopMotionValue()"
+			  multiple>
+				  <mat-button-toggle class ="phone-button-toggle" value="run" style="background-color: #3d3c3c; color:#FFF; font-family: 'IBM Plex Mono', monospace;">Background Motion</mat-button-toggle>
+			  </mat-button-toggle-group>
+			  <div id="phone-version-container">
+				<a class="phone-version-link" mat-flat-button style="background-color: lightgray" routerLink='/v1' outerLinkActive='active' ariaCurrentWhenActive="page">
+					Go to 2019 Version
+				</a>
+			  </div>
+		</div>
 	</div>
 </div>

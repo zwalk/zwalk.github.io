@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./v2.component.css']
 })
 export class V2Component {
-
+  showStars = true;
+  showClouds = false;
 }

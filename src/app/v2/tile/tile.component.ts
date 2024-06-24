@@ -88,6 +88,17 @@ export class TileComponent {
         this.fall = false;
       }
     })
+
+    // ipad pro
+    this.observer.observe('(min-width:768px) and (max-width: 1024px)')
+    .subscribe(result => {
+      if (result.matches) {
+        this.isPhone = false;
+        this.isTablet = true;
+      } else {
+        this.isTablet = false;
+      }
+    })
   }
 
   ngAfterViewInit() {

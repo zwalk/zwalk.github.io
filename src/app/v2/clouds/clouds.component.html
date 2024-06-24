@@ -1,0 +1,77 @@
+<div id="background-wrap">
+    <div class="x1"
+    [@moveClouds]="{
+        value: cloudStates['cloud1'],
+        params: {
+            scale: '0.65',
+            travelTime: '50s linear',
+            start:'-50%',
+            end: '150%',
+            rest: '2%'
+        }
+        }"
+    (@moveClouds.done)="handleReset('cloud1')">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x2"
+    [@moveClouds]="{
+        value: cloudStates['cloud2'],
+        params: {
+            scale: '0.3',
+            travelTime: '60s linear',
+            start:'-175%',
+            end: '220%',
+            rest: '2%'
+        }
+        }"
+    (@moveClouds.done)="handleReset('cloud2')">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x3"
+    [@moveClouds]="{
+        value: cloudStates['cloud3'],
+        params: {
+            scale: '0.5',
+            travelTime: '45s linear',
+            start:'-175%',
+            end: '200%',
+            rest: '75%'
+        }
+        }"
+    (@moveClouds.done)="handleReset('cloud3')">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x4"
+    [@moveClouds]="{
+        value: cloudStates['cloud4'],
+        params: {
+            scale: '0.4',
+            travelTime: '67s linear',
+            start:'-175%',
+            end: '200%',
+            rest: '146%'
+        }
+        }"
+    (@moveClouds.done)="handleReset('cloud4')">
+        <div class="cloud"></div>
+    </div>
+
+    <div class="x5"
+    [@moveClouds]="{
+        value: cloudStates['cloud5'],
+        params: {
+            scale: '0.55',
+            travelTime: '40s linear',
+            start:'-175%',
+            end: '200%',
+            rest: '-37%'
+        }
+        }"
+    (@moveClouds.done)="handleReset('cloud5')">
+        <div class="cloud"></div>
+    </div>
+    <sub>Background is adapted from <a href="https://codepen.io/Mark_Bowley/pen/LYZEBq">Mark Bowley's</a></sub>
+</div>

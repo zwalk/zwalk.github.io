@@ -1,3 +1,3 @@
-<div class="{{spaceRule}} {{getCSSPrefix('border')}} in">
+<div [ngClass]="{'white': this.color === 'white'}" class="{{spaceRule}} {{getCSSPrefix('border')}} in">
 	<ng-content></ng-content>
 </div>
