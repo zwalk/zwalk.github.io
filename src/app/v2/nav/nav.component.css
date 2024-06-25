@@ -91,7 +91,10 @@
 }
 
 .menu-button {
-	border-radius: 1px;
+	height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 /* end phone landscape */
 
