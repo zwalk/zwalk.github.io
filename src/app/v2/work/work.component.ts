@@ -42,8 +42,7 @@ export class WorkComponent {
       id: 2,
       img: "assets/v2/img/nw2.jpeg",
       roles: [
-              {jobTitle: "Senior Developer", subTitle: " (promoted Dec 2020)"} as Role,
-              {jobTitle: "Developer"} as Role
+              {jobTitle: "Senior Developer"} as Role,
             ],
       dates: "May 2019 - May 2021",
       url: 'https://www.nationwide.com/personal/about-us/',
