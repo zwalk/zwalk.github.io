@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterEvent, Event, NavigationEnd } from '@angular/router';
 import { BackgroundService } from './background.service';
 
 
@@ -16,6 +16,7 @@ export class AppComponent {
   title = 'v2';
   showStars = this.backgroundService.background == 'stars';
   showClouds = this.backgroundService.background == 'clouds';
+  version = 2;
 
   ngOnInit() {
     this.backgroundService.background$.subscribe(background => {
@@ -31,6 +32,14 @@ export class AppComponent {
         localStorage.setItem('showClouds', 'true');
       }
      })
+
+     this.router.events.subscribe((routeEvent)=> {
+      if (routeEvent instanceof NavigationEnd && routeEvent.url.toLowerCase().includes('v1')) {
+        this.version = 1;
+      } else if (routeEvent instanceof NavigationEnd && !routeEvent.url.toLowerCase().includes('v1')) {
+        this.version = 2;
+      }
+     })
   }
 
   getFromLocalStorage(key : string) {
@@ -41,6 +50,6 @@ export class AppComponent {
   }
 
   shouldShowV1Button() {
-    return !this.router.url.includes('v1')
+    return !this.router.url.includes('v1');
   }
 }

@@ -61,15 +61,3 @@
   }
 
 }
-
-sub {
-  font-size: x-small;
-  color: white;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-sub a {
-  color: white;
-}

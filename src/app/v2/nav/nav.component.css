@@ -218,15 +218,21 @@ h4 {
 	display: flex;
 	justify-content: flex-end;
 	margin-right: 1%;
-	flex-basis: 50%;
+	flex-basis: 90%;
 	max-width: 900px;
 }
 
 .background-selector-container {
 	display: flex;
 	align-items: center;
-	flex-basis: 60%;
-	justify-content: space-around;
+	flex-basis: 100%;
+	justify-content: flex-end;
+}
+
+.background-selector-container mat-button-toggle-group,
+.background-selector-container div {
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .button-group {

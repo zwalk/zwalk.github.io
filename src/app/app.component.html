@@ -1,3 +1,5 @@
 <router-outlet></router-outlet>
 <app-stars *ngIf="showStars"></app-stars>
 <app-clouds *ngIf="showClouds"></app-clouds>
+<sub id="stars-footer" *ngIf="showStars && version == 2">background adapted from <a href="https://codepen.io/sarazond/pen/LYGbwj">sarazond's example</a></sub>
+<sub id="clouds-footer" *ngIf="showClouds && version == 2">Background is adapted from <a href="https://codepen.io/Mark_Bowley/pen/LYZEBq">Mark Bowley's</a></sub>
